@@ -21,12 +21,12 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),)
+LINKS =  (('huxiu', 'http://www.huxiu.com/'),
+          ('zhihu', 'http://www.zhihu.com/'),
+          ('36Kr', 'http://www.36kr.com/'),)
 
 # Social widget
-SOCIAL = (('my sina blog', 'http://blog.sina.com.cn/u/2310559855'),
+SOCIAL = (('heifrank blog', 'http://heifrank.github.io'),
           ('google', 'http://www.google.com'),)
 
 DEFAULT_PAGINATION = 10

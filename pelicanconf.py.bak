@@ -21,12 +21,12 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),)
+LINKS =  (('»¢Ðá', 'http://www.huxiu.com/'),
+          ('Öªºõ', 'http://www.zhihu.com/'),
+          ('36Kr', 'http://www.36kr.com/'),)
 
 # Social widget
-SOCIAL = (('my sina blog', 'http://blog.sina.com.cn/u/2310559855'),
+SOCIAL = (('heifrank blog', 'http://heifrank.github.io'),
           ('google', 'http://www.google.com'),)
 
 DEFAULT_PAGINATION = 10
@@ -36,4 +36,3 @@ THEME = r'D:\Program Files\github install\pelican-themes-master\pelican-themes-m
 DISQUS_SITENAME = 'schnee27'
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-
