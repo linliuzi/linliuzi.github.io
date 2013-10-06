@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- #
+# -*- coding: gbk -*- #
 from __future__ import unicode_literals
 
 AUTHOR = u'linliuzi'
-SITENAME = u'linliuzi\'s blog'
+SITENAME = u'¾²´ýË®µ½Çþ³É ¡ª¡ª linliuzi\'s blog'
 SITEURL = 'http://linliuzi.github.io'
 
 TIMEZONE = 'Asia/Shanghai'
