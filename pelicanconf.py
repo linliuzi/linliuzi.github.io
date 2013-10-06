@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'schnee'
-SITENAME = u'jrayty'
+AUTHOR = u'linliuzi'
+SITENAME = u'linliuzi\'s blog'
 SITEURL = 'http://linliuzi.github.io'
 
 TIMEZONE = 'Asia/Shanghai'

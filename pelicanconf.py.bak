@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'schnee'
-SITENAME = u'jrayty'
+AUTHOR = u'linliuzi'
+SITENAME = u'linliuzi's blog'
 SITEURL = 'http://linliuzi.github.io'
 
 TIMEZONE = 'Asia/Shanghai'
@@ -21,8 +21,8 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('»¢Ðá', 'http://www.huxiu.com/'),
-          ('Öªºõ', 'http://www.zhihu.com/'),
+LINKS =  (('huxiu', 'http://www.huxiu.com/'),
+          ('zhihu', 'http://www.zhihu.com/'),
           ('36Kr', 'http://www.36kr.com/'),)
 
 # Social widget
