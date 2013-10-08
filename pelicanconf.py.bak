@@ -31,7 +31,7 @@ SOCIAL = (('heifrank blog', 'http://heifrank.github.io'),
 
 DEFAULT_PAGINATION = 10
 
-THEME = r'D:\Program Files\github install\pelican-themes-master\pelican-themes-master\bootstrap2'
+THEME = r'D:\Program Files\github install\pelican-themes-master\pelican-themes-master\tuxlite_tbs'
 
 DISQUS_SITENAME = 'schnee27'
 # Uncomment following line if you want document-relative URLs when developing
