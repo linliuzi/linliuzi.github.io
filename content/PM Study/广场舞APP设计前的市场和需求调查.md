@@ -118,7 +118,11 @@ QQ群的相关数据，体现的是跳广场舞的群众之间的社交需求。
 其中内容类，都只是提供若干个广场舞相关的视频，按要求下载至少一个APP后才可以播放视频，而APP的下载就是盈利点了。所以，这6个APP其实都只是一个壳。。。
 
 对剩下的3个综合类APP进行详细分析，如下图：  
-![综合类APP](https://lh5.googleusercontent.com/-mVqIxZyCSTo/Um9zE2IVWaI/AAAAAAAAAJk/lmjK-zbIhm8/w379-h553-no/%25E5%25B9%25BF%25E5%259C%25BA%25E8%2588%259EAPP%25E6%2583%2585%25E5%2586%25B5.jpg)
+![综合类APP1](https://lh3.googleusercontent.com/-wQK6bzz73Xs/Um-3rxGdigI/AAAAAAAAAKI/yeNK7U_1AII/w982-h553-no/%25E5%25B9%25BF%25E5%259C%25BA%25E8%2588%259EAPP%25E6%2583%2585%25E5%2586%25B5_%25E5%2589%25AF%25E6%259C%25AC1.jpg)
+
+![综合类APP2](https://lh4.googleusercontent.com/-NU7EcY3vO8Q/Um-3rx3KjfI/AAAAAAAAAKM/idAWd6OBW1c/w1043-h424-no/%25E5%25B9%25BF%25E5%259C%25BA%25E8%2588%259EAPP%25E6%2583%2585%25E5%2586%25B5_%25E5%2589%25AF%25E6%259C%25AC2.jpg)
+
+![综合类APP3](https://lh3.googleusercontent.com/-R6iuS2KNJfc/Um-3r_vvuAI/AAAAAAAAAKE/iISkH5qcKUg/w1044-h515-no/%25E5%25B9%25BF%25E5%259C%25BA%25E8%2588%259EAPP%25E6%2583%2585%25E5%2586%25B5_%25E5%2589%25AF%25E6%259C%25AC3.jpg)
 
 其中，做得最复杂的是广场舞社区，它和全民健身广场舞类似，拥有资讯、图库、视频、社区和购物广场几大块，也满足了该有的需求。但是从数据可见，问题也很多：APP的运营没有规律，图库内容很少，社区很冷清，购物广场只是堆砌几个淘宝的推广块等等。  
 广场舞APP则相当于广场舞社区APP的一个子集。且不讲。  
