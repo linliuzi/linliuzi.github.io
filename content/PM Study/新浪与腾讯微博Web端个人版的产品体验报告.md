@@ -1,7 +1,7 @@
 Title: 新浪与腾讯微博Web端个人版的产品体验报告
 Date: 2013-10-18
 Category: PM Study
-Tags: 微博, 体验报告, 产品
+Tags: 体验, 产品
 Slug: new_20131018
 
 

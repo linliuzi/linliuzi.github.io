@@ -1,7 +1,7 @@
 Title: belbin团队角色理论——转自网络
 Date: 2013-11-12
 Category: Resource Share
-Tags: 转载, 人生, 心灵成长
+Tags: 转载, 成长
 Slug: new_20131112
 
 笔试的时候做过belbin团队角色理论的测试，好奇查了下，再次记录下资料。  

@@ -1,7 +1,7 @@
 Title: 广场舞APP设计前的需求和竞品调查
 Date: 2013-10-29
 Category: PM Study
-Tags: 需求, 竞品, 调查
+Tags: 需求, 竞品
 Slug: new_20131029
 
 ##调查背景
