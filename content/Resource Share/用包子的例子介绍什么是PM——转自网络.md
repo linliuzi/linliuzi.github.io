@@ -4,4 +4,4 @@ Category: PM Study
 Tags: 产品, 运营
 Slug: new_20131203
 
-![图片](https://lh3.googleusercontent.com/FBvRYY78-nnhzYjBghy0jYG_TihqZdqfL-lnfRsfDNQ=w36-h144-p-no "包子互联网")
+![图片](https://lh6.googleusercontent.com/-NfbQJ_QKdQA/UuIXjuA9drI/AAAAAAAAAPA/7WBcE35_gvo/w23-h543-no/%25E7%2594%25A8%25E5%258C%2585%25E5%25AD%2590%25E7%259A%2584%25E4%25BE%258B%25E5%25AD%2590%25E4%25BB%258B%25E7%25BB%258D%25E4%25BB%2580%25E4%25B9%2588%25E6%2598%25AFPM.jpg "包子互联网")
