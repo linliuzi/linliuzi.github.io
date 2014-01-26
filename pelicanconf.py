@@ -23,7 +23,8 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 LINKS =  (('huxiu', 'http://www.huxiu.com/'),
           ('zhihu', 'http://www.zhihu.com/'),
-          ('36Kr', 'http://www.36kr.com/'),)
+          ('36Kr', 'http://www.36kr.com/'),
+          ('geekpark','http://www.geekpark.net/'),)
 
 # Social widget
 SOCIAL = (('heifrank blog', 'http://heifrank.github.io'),
