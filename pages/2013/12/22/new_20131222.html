@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>拟物化与扁平化设计风格学习笔记</title>
+  <title>Holo Theme和Android Design学习笔记</title>
   <meta name="author" content="linliuzi">
 
 
@@ -52,43 +52,44 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">拟物化与扁平化设计风格学习笔记</h1>
-      <p class="meta"><time datetime="2013-12-18T00:00:00" pubdate>2013-12-18</time></p>
+      <h1 class="entry-title">Holo Theme和Android Design学习笔记</h1>
+      <p class="meta"><time datetime="2013-12-22T00:00:00" pubdate>2013-12-22</time></p>
 </header>
 
-  <div class="entry-content"><p>今天，苹果在其开发者网站上发布了新规，从明年2月1日其所有新提交的应用都必须针对iOS 7进行优化，包括首次提交的应用和老应用的更新版本。众所周知，iOS 7的一大改变就是设计风格从拟物向扁平化转换。但是我一直没有去深入了解究竟什么是拟物化、什么是扁平化，因此借此提醒学习下，并简单记录如下。  </p>
-<p><strong>参考链接</strong><br />
-<a href="http://new.iheima.com/detail/2013/1100/51777.html">http://new.iheima.com/detail/2013/1100/51777.html</a><br />
-<a href="http://www.hxsd.com/debate/">http://www.hxsd.com/debate/</a><br />
-<a href="http://baike.baidu.com/view/6931513.htm">http://baike.baidu.com/view/6931513.htm</a></p>
-<p><strong>首先明确</strong><br />
-第一，设计风格不是移动互联网的专有名词，在建筑、绘画等等行业都有这两大设计风格的应用。<br />
-第二，设计风格没有好坏之分，把某种风格运用的出色得体便是好的设计。<br />
-第三，设计风格也有潮流，没有永远受欢迎的风格，功能才是最根本的立足点。<br />
-第四，设计风格并不是最重要的，无论选择什么风格，为产品创造个性是UI设计师的最重要使命之一。</p>
-<p><strong>拟物化设计</strong><br />
-<strong>特征</strong>：其特征是借用已有的实体，即使新设计中并不需要原来的功能，但使得新设计满足一定的亲和度需要。<br />
-1. 界面：模拟真实物体的材质、质感、细节、光亮等。<br />
-2. 交互：人机交互也拟物化，模拟现实中的交互方式。<br />
-<strong>例子</strong>：ibook中的木质书架，照相软件模拟机械相机快门的咔嚓声。<br />
-<strong>优点</strong>：给用户亲切感，由于与实体相似所以用户学习成本较低。<br />
-<strong>缺点</strong>：适应性差，创建多个屏幕尺寸和分辨率的拟物设计；过于重视外表，容易以貌取人。</p>
-<p><strong>扁平化设计</strong><br />
-<strong>特征</strong>：此概念最核心的特征是放弃一切装饰效果，诸如阴影、透视、纹理、渐变等等能做出3D效果的元素一概不用。所有的元素的边界都干净利落，没有任何羽化，渐变，或者阴影。<br />
-1. 界面：单色极简的抽象矩形色块、大字体、光滑、现代感十足。<br />
-2. 交互：核心在于功能本身的使用，所以去掉了冗余的界面和交互，而是使用更直接的设计来完成任务。<br />
-<strong>例子</strong>：微软的Metro UI。<br />
-<strong>优点</strong>：<br />
-1. 界面简约： 界面干净整齐，使用起来格外简洁。<br />
-2. 条理清晰： 可以更简单直接的将信息和事物的工作方式展示出来，减少认知障碍的产生。<br />
-3. 适应性好： 可以一次保证在所有的屏幕尺寸上的效果，不需适配多种屏幕尺寸和分辨率。<br />
-<strong>缺点</strong>：用户学习成本较高；传达的感情不丰富，甚至过于冰冷。  </p></div>
+  <div class="entry-content"><p>继上次学习了下iOS的拟物化和扁平化设计风格之后，很自然地好奇Android的设计风格是什么样子的，与iOS是否有何区别。从而引出这第二篇交互学习笔记。本文主要学习下Holo Theme和Android Design。</p>
+<p>首先隆重推荐下国内熟知Android Design的<strong>NovaDNG</strong>童鞋！几乎所有靠谱介绍都来自于他，不过传闻其对设计风格的喜好也是无常的o(∩_∩)o 哈哈~OK，还是不八卦了，先祭上NovaDNG的文章：<br />
+<a href="http://www.phonekr.com/android-design-is-not-just-holo/">Holo Theme 大行其道, Android Design 无人知晓?</a><br />
+<a href="http://www.phonekr.com/metro-vs-holo/">为什么比起 Metro 我更喜欢 Holo</a></p>
+<h3>Holo Theme</h3>
+<p><strong>是什么</strong><br />
+Holo Theme是一种视觉语言或者说是一种主题。<br />
+Holo Theme是Android Design的一部分，是Android Design最基础的呈现方式。Android 4.0刚发布时，Holo Theme曾经是Android Design的绝对主流，但是现在，Android Design的主流早已不是Holo Theme了。<br />
+由于Holo Theme是最为基础的Android Design呈现形式，所以每一台Android 4.X的手机系统内部都集成了Holo Theme需要的控件（即开发者不需要自己设计控件，便可以直接从系统里调用相应的控件）。当然，优秀的APP的设计者不应该完全照搬Holo Theme，而应在Holo Theme的原则和框架上创造出自己产品的特色哈！  </p>
+<p><strong>特点</strong><br />
+简单，质朴。<br />
+Holo控件的样式和配色都非常保守，不会影响用户的操作或者分散用户的注意力。  </p>
+<p><strong>优缺点</strong><br />
+完全使用Holo Theme的应用在UI方面和Android 4.X的设置/电话的视觉效果极度统一，因此，其作为Android应用的辨识度极高，且完全不可能与系统风格产生冲突。<br />
+但是，在中国，由于MIUI和很多国产ROM私自替换了ROM中谷歌原本规定保留的Holo控件，因此容易使原本在原生系统上运行时是Holo Theme的应用无法正常表现，变得不伦不类。  </p>
+<h3>Android Design</h3>
+<p><strong>是什么</strong><br />
+类似于Apple的iOS Human Interface Guidelines，Android Design Guide是2011年10月Google发布的针对Android系统的设计指导规范。
+但是不同于Apple把HIG当作硬性标准写入App Store的审核里，作为是否让你上架的判断标准之一；Android Design并不是硬性标准，并且还在继续完善中。</p>
+<p><strong>特点</strong><br />
+Android Design的特点是“拟真”。<br />
+跟iOS 7之前常见的拟物相比，<em>拟真和拟物的区别在于“拟”的对象不同</em>。<br />
+“拟真”抛弃了堪称“拟物”之核心的材质与具体的样式，保留了光影效果，立体感和抽象的操作方式。在真正的Android Design中，没有任何对材质的模仿，对现实中事物的模仿也只会以抽象的形式出现。<br />
+比如，一块皮革，“拟物”会保留其皮质的材质保留其实物的颜色，而“拟真”则只会用抽象的一个色块来表示其平衡的光影效果而且颜色不一定会用实物的颜色。</p>
+<p><strong>与Metro Design的区别</strong><br />
+同样追求简洁的UI，android Design简约而不简单，不放弃对细节的追求；Metro则不拟真，Metro UI完全二维，没有任何起伏，就像纸质印刷品一样。  </p>
+<p><strong>现在的Android Design</strong><br />
+Android 4.0刚发布时，Holo Theme曾经是Android Design的绝对主流；而现在的Android Design比较有代表性的是“次世代Android Design”，其特征在于：更加专注拟真，更加大胆丰富的用色，更加丰富的交互形式，更加灵活的布局形式。  </p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
     Posted by <span class="fn">linliuzi</span>
   </span>
-<time datetime="2013-12-18T00:00:00" pubdate>2013-12-18</time>  <span class="categories">
+<time datetime="2013-12-22T00:00:00" pubdate>2013-12-22</time>  <span class="categories">
     <a class="category" href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>
     <a class="category" href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>
   </span>
@@ -164,9 +165,9 @@
 </p></footer>
 	<script type="text/javascript">
 	  var disqus_shortname = 'schnee27';
-          var disqus_identifier = '/pages/2013/12/18/new_20131218.html';
-          var disqus_url = 'http://linliuzi.github.io/pages/2013/12/18/new_20131218.html';
-          var disqus_title = '拟物化与扁平化设计风格学习笔记';
+          var disqus_identifier = '/pages/2013/12/22/new_20131222.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2013/12/22/new_20131222.html';
+          var disqus_title = 'Holo Theme和Android Design学习笔记';
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
