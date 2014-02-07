@@ -1,6 +1,6 @@
 Title: 用包子的例子介绍什么是PM——转自网络
 Date: 2013-12-03
-Category: PM Study
+Category: Resource Share
 Tags: 产品, 运营
 Slug: new_20131203
 
