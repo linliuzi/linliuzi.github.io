@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>个性化搜索引擎学习笔记</title>
+  <meta name="author" content="linliuzi">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://linliuzi.github.io/favicon.png" rel="icon">
+  <link href="http://linliuzi.github.io/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://linliuzi.github.io/theme/js/modernizr-2.0.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/ender.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://linliuzi.github.io/">静待水到渠成</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://linliuzi.github.io/" rel="subscribe-rss">RSS</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://linliuzi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+    <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">个性化搜索引擎学习笔记</h1>
+      <p class="meta"><time datetime="2014-03-15T00:00:00" pubdate>2014-03-15</time></p>
+</header>
+
+  <div class="entry-content"><div class="highlight"><pre><span class="err">搜索做了半年，亟需解决的问题基本没有了，前两代搜索引擎所能做的事情完成得尚可。</span>
+<span class="err">之前的搜索引擎学习笔记里对第三代搜索引擎介绍较少，故另外详细学习下个性化搜索引擎。</span>
+<span class="err">为后续的工作提供基本的技术知识。</span>
+</pre></div>
+
+
+<p><strong>资料链接</strong>
+<a href="http://blog.csdn.net/xiaoyu714543065/article/details/7932154">http://blog.csdn.net/xiaoyu714543065/article/details/7932154</a></p>
+<h3>个性化搜索引擎的目标</h3>
+<p><strong>准确描述用户兴趣</strong>:为不同用户提供不同的服务, 以满足不同的需求。提高站点的服务质量和访问效率,从而吸引更多的访问者。<br />
+<strong>用户感应式</strong>:user sensitive PageRank, 搜索引擎感兴趣的不单单是某个单一用户的个性化搜索，而是某些用户的分类化（式）的个性化（较小范围内显性/隐性用户反馈的集合）。<br />
+<strong>直觉搜索</strong>:(intuitive search):能够在用户没有考虑清楚要寻找什么之前，为用户呈现所需的信息。  </p>
+<h3>个性化搜索引擎的分类</h3>
+<p>目前，个性化服务根据其所采用的推荐技术可以分为两种:基于规则的系统和基于信息过滤的系统，其中信息过滤系统又可分为基于内容过滤的系统和基于协作过滤的系统。  </p>
+<p><strong>基于规则的系统</strong>：利用预定义的规则来过滤信息,它的优点是简单直接,缺点是规则质量很难保证,而且不能动态更新,此外,随着规则的数量增多,系统将变得越来越难以管理。<br />
+<strong>基于内容过滤的系统</strong>：利用资源与用户兴趣的相似性来过滤信息,它的关键问题是相似性计算,它的优点是简单有效,缺点是难以区分资源内容的品质和风格,而且不能为用户发现新的感兴趣的资源,只能发现和用户已有兴趣相似的资源。<br />
+<strong>基于协作过滤的系统</strong>：利用用户之间的相似性来推荐信息,它能够为用户发现新的感兴趣的内容,它的关键问题是用户聚类,其缺点是需要用户的参与。</p>
+<h3>用户描述信息的表达与更新、资源特征选取与表达</h3>
+<p><strong>用户描述信息的内容</strong><br />
+基于内容信息过滤来说，同样需要用户的参与。为了跟踪用户的兴趣和行为，需要为每个用户建立一个用户描述文件（User Profile），用户描述文件可以包括个人信息、个人兴趣、行为模式、以及用户间的关系等。<br />
+用户的具体个性化描述信息可能但不限于：</p>
+<ul>
+<li>地理位置因素</li>
+<li>顶级域名（TLD，Top Level Domain）的地理位置</li>
+<li>IP地址</li>
+<li>对查询的地理位置分析</li>
+<li>技术方面的因素</li>
+<li>浏览器</li>
+<li>操作系统</li>
+<li>移动设备</li>
+<li>时间因素</li>
+<li>当前在一天中的时间因素</li>
+<li>当前在一年中的时间因素</li>
+<li>历史性数据</li>
+<li>行为性因素</li>
+<li>搜索的历史数据</li>
+<li>与搜索结果页（SERP）互动的数据</li>
+<li>选择率和跳出率的数据</li>
+<li>和广告的互动操作</li>
+<li>浏览习惯（常用用户 – 更新鲜的结果）</li>
+<li>可能的个性化因素</li>
+<li>社会化搜索</li>
+<li>人口统计学（指使用者的年龄、职业等个人信息）</li>
+<li>浏览历史（隐性数据）</li>
+</ul>
+<p><strong>用户描述文件的建立</strong><br />
+从四个角度考虑：  </p>
+<ul>
+<li>内容：基于兴趣和基于行为？</li>
+<li>粒度：一个用户一个描述或多个描述，还是一类用户共享一个描述？</li>
+<li>时效性：短期的或长期的？</li>
+<li>存储：是用文件来组织，还是用关系数据库或其它数据库来存储、XML数据？</li>
+</ul>
+<p><strong>用户描述文件的更新</strong><br />
+动态更新用户的兴趣可以提高个性化服务的质量。用户第一次使用时，用户注册自己的基本信息和感兴趣的内容，也可以隐式地收集用 户信息。在定制好一个用户描述文件后，可以让用户自主修改，也可以自适应地修改，这样，随用户兴趣的变化而变化。<br />
+用户跟踪：显式跟踪（很少有用户向系统主动表达自己的喜好）和隐式跟踪（行为跟踪、日志挖掘）。<br />
+标记书签、浏览页面和拖动滚动条所花时间能有效地揭示用户的兴趣。收集用户感兴趣的领域，有利于对用户感兴趣的内容进行分类。  </p>
+<p><strong>资源的特征选取与表达</strong><br />
+资源的表达需要获取资源的特征，并表示为合适的方式。<br />
+基于内容的方法：从文档本身抽取信息来表示文档，利用特征词条及其权值来表示。（特征选取）<br />
+基于分类的方法：基于分类的方法是利用类别来表示资源，将文档资源分类有利于将文档推荐给对该类文档感兴趣的用户。（聚类算法）  </p>
+<h3>如何表达用户兴趣与结果的关系？</h3>
+<p><strong>如何有效地处理垃圾信息?</strong>（对我们来说，暂无意义）<br />
+采用可定制的白名单的方式，过滤掉与用户无关的、使用户反感的文档或网站。  </p>
+<p><strong>如何处理个性化信息</strong>（如何建立文档和用户兴趣关系的表达）？<br />
+目的是，建立文档和用户兴趣之间的关系，实现用户兴趣的建立、更新。<br />
+A. 矢量空间模型：<br />
+通常文档的表达是矢量空间模型，这个很容易理解，将文本文档看成由一组词条，对于每一词条，根据其在文档中的重要程度赋予一定的权重，所有的文档都表示用词条特征矢量来表示，也就保证了文档和用户兴趣之间相似性计算。<br />
+不足之处：<br />
+1、预先定义好主题词表。<br />
+2、进行精确匹配不能保证两个矢量之间存在很多相交的词。<br />
+B. 概率统计模型<br />
+建立一个领域分类模型，然后计算所有文档和用户兴趣在这个分类模型上的概率分布，用该概率分布来表达文档和用户兴趣。用户在领域分类上更容易产生相似性。概率模型比矢量空间模型能更好地表达了用户的兴趣和变化。<br />
+改进的地方：<br />
+概率统计模型实际上是建立另一个搜索引擎,对搜索结果中的每一篇文档都必须计算其在领域分类模型上的概率分布，这会极大地影响算法的性能，如果该搜索引擎能够预先计算好每一篇文档在领域分类模型上的概率分布,则算法的性能会得到很大的提高，从而满足实时处理的需要。  </p>
+<h3>个性化搜索引擎的实现流程</h3>
+<p>整个个性化模块实现步骤：<br />
+1) 对用户兴趣进行收集。<br />
+2) 用户描述信息确定、分类。<br />
+3) 资源信息特征选取、分类。<br />
+4) 建立用户和兴趣的关联，兴趣和资源的关联。<br />
+5) 利用资源和用户兴趣的关系，计算出搜索结果中的每个文档和用户兴趣的相似度，并对相似度进行排序。<br />
+6) 用户对搜索结果进行评分（或记录用户行为），更新该类用户的兴趣规则。  </p>
+<h3>个性化搜索引擎的实际实施</h3>
+<p>可能可以考虑以下几个实施的接入点（划分模块）：<br />
+1) 用户信息、行为收集、维护。<br />
+2) 用户兴趣领域模型的建立。<br />
+3) 资源的特征捕获。<br />
+4) 相似度算法植入现有搜索引擎。  </p>
+<p>搜索后端：立足在目前Solr引擎，通过改进建立索引时的预测计算、预留字段，对用户行为改变进行记录，周期性对某些用户关注度高的关键词，索引进行预留字段的更新。<br />
+搜索前端：用户行为分析、隐私保护。</p>
+<h3>结语</h3>
+<p>说到底，个性化搜索引擎技术难点主要在数据挖掘和语义分析，而优秀和卓越的差距不外乎于这两点关键。<br />
+对于目前属于争取做到优秀的我们而言，用户需求和产品设计本身也是较为重要的内外在因素。  </p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">linliuzi</span>
+  </span>
+<time datetime="2014-03-15T00:00:00" pubdate>2014-03-15</time>  <span class="categories">
+    <a class="category" href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>
+    <a class="category" href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>
+  </span>
+</p>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/16/new_20140316.html">数据挖掘基础知识学习笔记</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/15/new_20140315.html">个性化搜索引擎学习笔记</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/14/new_20140314.html">辩论七律——转自奥卡姆剃刀的博客</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/07/new_20140307.html">历史的真言——托克维尔文集摘抄</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/02/14/new_20140214.html">六十韶光等一吻——关于玫瑰</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://linliuzi.github.io/category/enjoy-life.html">Enjoy Life</a></li>
+        <li><a href="http://linliuzi.github.io/category/others.html">Others</a></li>
+        <li><a href="http://linliuzi.github.io/category/pm-study.html">PM Study</a></li>
+        <li><a href="http://linliuzi.github.io/category/reading-notes.html">Reading Notes</a></li>
+        <li><a href="http://linliuzi.github.io/category/resource-share.html">Resource Share</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>,    <a href="http://linliuzi.github.io/tag/sheng-huo.html">生活</a>,    <a href="http://linliuzi.github.io/tag/chang-shi.html">常识</a>,    <a href="http://linliuzi.github.io/tag/jing-pin.html">竞品</a>,    <a href="http://linliuzi.github.io/tag/du-shu-bi-ji.html">读书笔记</a>,    <a href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>,    <a href="http://linliuzi.github.io/tag/guan-hou-gan.html">观后感</a>,    <a href="http://linliuzi.github.io/tag/ti-yan.html">体验</a>,    <a href="http://linliuzi.github.io/tag/ren-sheng.html">人生</a>,    <a href="http://linliuzi.github.io/tag/yun-ying.html">运营</a>,    <a href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>,    <a href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>,    <a href="http://linliuzi.github.io/tag/dian-shang.html">电商</a>,    <a href="http://linliuzi.github.io/tag/si-xiang.html">思想</a>,    <a href="http://linliuzi.github.io/tag/shu-ju.html">数据</a>,    <a href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>,    <a href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>,    <a href="http://linliuzi.github.io/tag/sui-bi.html">随笔</a>,    <a href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>  </section>
+
+
+    <section>
+        <h1>Social</h2>
+        <ul>
+            <li><a href="http://linliuzi.github.io/" type="application/rss+xml" rel="alternate">RSS</a></li>
+            <li><a href="http://heifrank.github.io" target="_blank">heifrank blog</a></li>
+            <li><a href="http://www.google.com" target="_blank">google</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h2>
+        <ul>
+            <li><a href="http://www.huxiu.com/" target="_blank">huxiu</a></li>
+            <li><a href="http://www.zhihu.com/" target="_blank">zhihu</a></li>
+            <li><a href="http://www.36kr.com/" target="_blank">36Kr</a></li>
+            <li><a href="http://www.geekpark.net/" target="_blank">geekpark</a></li>
+        </ul>
+    </section>
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - linliuzi -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+	<script type="text/javascript">
+	  var disqus_shortname = 'schnee27';
+          var disqus_identifier = '/pages/2014/03/15/new_20140315.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2014/03/15/new_20140315.html';
+          var disqus_title = '个性化搜索引擎学习笔记';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>

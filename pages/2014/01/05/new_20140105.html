@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>搜索引擎基础知识学习笔记</title>
+  <meta name="author" content="linliuzi">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://linliuzi.github.io/favicon.png" rel="icon">
+  <link href="http://linliuzi.github.io/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://linliuzi.github.io/theme/js/modernizr-2.0.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/ender.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://linliuzi.github.io/">静待水到渠成</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://linliuzi.github.io/" rel="subscribe-rss">RSS</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://linliuzi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+    <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">搜索引擎基础知识学习笔记</h1>
+      <p class="meta"><time datetime="2014-01-05T00:00:00" pubdate>2014-01-05</time></p>
+</header>
+
+  <div class="entry-content"><div class="highlight"><pre><span class="err">虽然我现在做的并非传统的网页搜索，但是搜索引擎的基本思想有大部分是通用的。</span>
+<span class="err">在学习搜索引擎的基础知识的过程中，我果然发现很多熟悉的思想，也算是将自己的经验所得做个知识梳理。</span>
+</pre></div>
+
+
+<p><strong>资料链接</strong>
+<a href="http://blog.csdn.net/xiaoyu714543065/article/details/7932134">http://blog.csdn.net/xiaoyu714543065/article/details/7932134</a></p>
+<h3>基于词频统计——词位置加权的第一代搜索引擎</h3>
+<p>利用关键词在文档中出现的频率和位置排序是搜索引擎最早期排序的主要思想，其技术发展也最为成熟，是第一阶段搜索引擎的主要排序技术，应用非常广泛，至今仍是许多搜索引擎的核心排序技术。其基本原理是：<strong>关键词在文档中词频越高，出现的位置越重要，则被认为和检索词的相关性越好。</strong>  </p>
+<p><strong>词频统计</strong><br />
+文档的词频是指查询关键词在文档中出现的频率。查询关键词词频在文档中出现的频率越高，其相关度越大。但当关键词为常用词时，使其对相关性判断的意义非常小。TF/IDF很好的解决了这个问题。TF/IDF算法被认为是信息检索中最重要的发明。<br />
+TF(Term Frequency):单文本词汇频率，用关键词的次数除以网页的总字数，其商称为“关键词的频率”。<br />
+IDF（Inverse Document Frequency）：逆文本频率指数，其原理是，一个关键词在N个网页中出现过，那么N越大，此关键词的权重越小，反之亦然。当关键词为常用词时，其权重极小，从而解决词频统计的缺陷。</p>
+<p><strong>词位置加权</strong><br />
+在搜索引擎中，主要针对网页进行词位置加权。所以，页面版式信息的分析至关重要。通过对检索关键词在Web页面中不同位置和版式，给予不同的权值，从而根据权值来确定所搜索结果与检索关键词相关程度。<br />
+可以考虑的版式信息有：是否是标题，是否为关键词，是否是正文，字体大小，是否加粗等等。同时，锚文本的信息也是非常重要的，它一般能精确的描述所指向的页面的内容。</p>
+<h3>基于链接分析排序的第二代搜索引擎</h3>
+<p>链接分析排序的思想起源于文献引文索引机制，即论文被引用的次数越多或被越权威的论文引用，其论文就越有价值。链接分析排序的思路与其相似，<strong>网页被别的网页引用的次数越多或被越权威的网页引用，其价值就越大</strong>。被别的网页引用的次数越多，说明该网页越受欢迎，被越权威的网页引用，说明该网页质量越高。<br />
+链接分析排序算法大体可以分为以下几类：基于随机漫游模型的，比如PageRank和Repution算法；基于概率模型的，如SALSA、PHITS；基于Hub和Authority相互加强模型的，如HITS及其变种；基于贝叶斯模型的，如贝叶斯算法及其简化版本。所有的算法在实际应用中都结合传统的内容分析技术进行了优化。</p>
+<p><strong>PageRank算法</strong><br />
+其基本思想是：页面的重要程度用PageRank值来衡量，PageRank值主要体现在两个方面：引用该页面的页面个数和引用该页面的页面重要程度。<br />
+PageRank是一个与查询无关的静态算法，因此所有网页的PageRank值均可以通过离线计算获得。这样，减少了用户检索时需要的排序时间，极大地降低了查询响应时间。但是PageRank存在两个缺陷：首先PageRank算法严重歧视新加入的网页，因为新的网页的出链接和入链接通常都很少，PageRank值非常低。另外PageRank算法仅仅依靠外部链接数量和重要度来进行排名，而忽略了页面的主题相关性，以至于一些主题不相关的网页（如广告页面）获得较大的PageRank值，从而影响了搜索结果的准确性。</p>
+<p><strong>Topic-Sensitive PageRank算法</strong><br />
+主题敏感（Topic-Sensitive）的PageRank算法解决了“主题漂流”问题。该算法考虑到有些页面在某些领域被认为是重要的，但并不表示它在其它领域也是重要的。<br />
+网页A链接网页B，可以看作网页A对网页B的评分，如果网页A与网页B属于相同主题，则可认为A对B的评分更可靠。因为A与B可形象的看作是同行，同行对同行的了解往往比不是同行的要多，所以同行的评分往往比不是同行的评分可靠。遗憾的是TSPR并没有利用主题的相关性来提高链接得分的准确性。</p>
+<p><strong>HillTop算法</strong><br />
+HillTop是一种查询相关性链接分析算法，克服了的PageRank的查询无关性的缺点。HillTop算法认为具有相同主题的相关文档链接对于搜索者会有更大的价值。在Hilltop中仅考虑那些用于引导人们浏览资源的专家页面（Export Sources）。Hilltop在收到一个查询请求时，首先根据查询的主题计算出一列相关性最强的专家页面，然后根据指向目标页面的非从属专家页面的数量和相关性来对目标页面进行排序。<br />
+HillTop算法确定网页与搜索关键词的匹配程度的基本排序过程取代了过分依靠PageRank的值去寻找那些权威页面的方法，避免了许多想通过增加许多无效链接来提高网页PageRank值的作弊方法。HillTop算法通过不同等级的评分确保了评价结果对关键词的相关性，通过不同位置的评分确保了主题（行业）的相关性，通过可区分短语数防止了关键词的堆砌。<br />
+但是，专家页面的搜索和确定对算法起关键作用，专家页面的质量对算法的准确性起着决定性作用，也就忽略了大多数非专家页面的影响。专家页面在互联网中占的比例非常低（1.79%），无法代表互联网全部网页，所以HillTop存在一定的局限性。同时，不同于PageRank算法，HillTop算法的运算是在线运行的，对系统的响应时间产生极大的压力。  </p>
+<p><strong>HITS</strong>
+HITS（Hyperlink Induced Topic Search）算法按照超链接的方向，将网页分成两种类型的页面：Authority页面和Hub页面。Authority页面又称权威页面，是指与某个查询关键词和组合最相近的页面，Hub页面又称目录页，该页面的内容主要是大量指向Authority页面的链接，它的主要功能就是把这些Authority页面联合在一起。对于Authority页面P，当指向P的Hub页面越多，质量越高，P的Authority值就越大；而对于Hub页面H，当H指向的Authority的页面越多，Authority页面质量越高，H的Hub值就越大。对整个Web集合而言，Authority和Hub是相互依赖、相互促进，相互加强的关系。Authority和Hub之间相互优化的关系，即为HITS算法的基础。<br />
+HITS基本思想是：算法根据一个网页的入度（指向此网页的超链接）和出度（从此网页指向别的网页）来衡量网页的重要性。在限定范围之后根据网页的出度和入度建立一个矩阵，通过矩阵的迭代运算和定义收敛的阈值不断对两个向量Authority和Hub值进行更新直至收敛。<br />
+实验数据表明，HITS的排名准确性要比PageRank高，HITS算法的设计符合网络用户评价网络资源质量的普遍标准，因此能够为用户更好的利用网络信息检索工具访问互联网资源带来便利。<br />
+但却存在以下缺陷：首先，HITS算法只计算主特征向量，处理不好主题漂移问题；其次，进行窄主题查询时，可能产生主题泛化问题；第三，HITS算法可以说一种实验性质的尝试。它必须在网络信息检索系统进行面向内容的检索操作之后，基于内容检索的结果页面及其直接相连的页面之间的链接关系进行计算。尽管有人尝试通过算法改进和专门设立链接结构计算服务器（Connectivity Server）等操作，可以实现一定程度的在线实时计算，但其计算代价仍然是不可接受的。  </p>
+<h3>基于智能化排序的第三代搜索引擎</h3>
+<p>排序算法在搜索引擎中具有特别重要的地位，目前许多搜索引擎都在进一步研究新的排序方法，来提升用户的满意度。但目前第二代搜索引擎有着以下两个不足之处，在此背景下，基于智能化排序的第三代搜索引擎也就应运而生。  </p>
+<p><strong>相关性问题</strong><br />
+相关性是指检索词和页面的相关程度。由于语言复杂，仅仅通过链接分析及网页的表面特征来判断检索词与页面的相关性是片面的。例如：检索“稻瘟病”，有网页是介绍水稻病虫害信息的，但文中没有“稻瘟病”这个词，搜索引擎根本无法检索到。正是以上原因，造成大量的搜索引擎作弊现象无法解决。<strong>解决相关性的的方法应该是增加语意理解</strong>，分析检索关键词与网页的相关程度，相关性分析越精准，用户的搜索效果就会越好。同时，相关性低的网页可以剔除，有效地防止搜索引擎作弊现象。检索关键词和网页的相关性是在线运行的，会给系统相应时间很大的压力，可以采用分布式体系结构可以提高系统规模和性能。  </p>
+<p><strong>搜索结果的单一化问题</strong><br />
+在搜索引擎上，任何人搜索同一个词的结果都是一样。这并不能满足用户的需求。不同的用户对检索的结果要求是不一样的。例如：普通的农民检索“稻瘟病”，只是想得到稻瘟病的相关信息以及防治方法，但农业专家或科技工作者可能会想得到稻瘟病相关的论文。<br />
+解决搜索结果单一的方法是提供个性化服务，实现智能搜索。通过Web数据挖掘，建立用户模型（如用户背景、兴趣、行为、风格），提供个性化服务。  </p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">linliuzi</span>
+  </span>
+<time datetime="2014-01-05T00:00:00" pubdate>2014-01-05</time>  <span class="categories">
+    <a class="category" href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>
+    <a class="category" href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>
+  </span>
+</p>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/16/new_20140316.html">数据挖掘基础知识学习笔记</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/15/new_20140315.html">个性化搜索引擎学习笔记</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/14/new_20140314.html">辩论七律——转自奥卡姆剃刀的博客</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/03/07/new_20140307.html">历史的真言——托克维尔文集摘抄</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/02/14/new_20140214.html">六十韶光等一吻——关于玫瑰</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://linliuzi.github.io/category/enjoy-life.html">Enjoy Life</a></li>
+        <li><a href="http://linliuzi.github.io/category/others.html">Others</a></li>
+        <li><a href="http://linliuzi.github.io/category/pm-study.html">PM Study</a></li>
+        <li><a href="http://linliuzi.github.io/category/reading-notes.html">Reading Notes</a></li>
+        <li><a href="http://linliuzi.github.io/category/resource-share.html">Resource Share</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>,    <a href="http://linliuzi.github.io/tag/sheng-huo.html">生活</a>,    <a href="http://linliuzi.github.io/tag/chang-shi.html">常识</a>,    <a href="http://linliuzi.github.io/tag/jing-pin.html">竞品</a>,    <a href="http://linliuzi.github.io/tag/du-shu-bi-ji.html">读书笔记</a>,    <a href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>,    <a href="http://linliuzi.github.io/tag/guan-hou-gan.html">观后感</a>,    <a href="http://linliuzi.github.io/tag/ti-yan.html">体验</a>,    <a href="http://linliuzi.github.io/tag/ren-sheng.html">人生</a>,    <a href="http://linliuzi.github.io/tag/yun-ying.html">运营</a>,    <a href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>,    <a href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>,    <a href="http://linliuzi.github.io/tag/dian-shang.html">电商</a>,    <a href="http://linliuzi.github.io/tag/si-xiang.html">思想</a>,    <a href="http://linliuzi.github.io/tag/shu-ju.html">数据</a>,    <a href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>,    <a href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>,    <a href="http://linliuzi.github.io/tag/sui-bi.html">随笔</a>,    <a href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>  </section>
+
+
+    <section>
+        <h1>Social</h2>
+        <ul>
+            <li><a href="http://linliuzi.github.io/" type="application/rss+xml" rel="alternate">RSS</a></li>
+            <li><a href="http://heifrank.github.io" target="_blank">heifrank blog</a></li>
+            <li><a href="http://www.google.com" target="_blank">google</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h2>
+        <ul>
+            <li><a href="http://www.huxiu.com/" target="_blank">huxiu</a></li>
+            <li><a href="http://www.zhihu.com/" target="_blank">zhihu</a></li>
+            <li><a href="http://www.36kr.com/" target="_blank">36Kr</a></li>
+            <li><a href="http://www.geekpark.net/" target="_blank">geekpark</a></li>
+        </ul>
+    </section>
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - linliuzi -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+	<script type="text/javascript">
+	  var disqus_shortname = 'schnee27';
+          var disqus_identifier = '/pages/2014/01/05/new_20140105.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2014/01/05/new_20140105.html';
+          var disqus_title = '搜索引擎基础知识学习笔记';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
