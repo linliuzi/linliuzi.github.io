@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>灰度发布相关学习笔记</title>
+  <meta name="author" content="linliuzi">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://linliuzi.github.io/favicon.png" rel="icon">
+  <link href="http://linliuzi.github.io/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://linliuzi.github.io/theme/js/modernizr-2.0.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/ender.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://linliuzi.github.io/">静待水到渠成</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://linliuzi.github.io/" rel="subscribe-rss">RSS</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://linliuzi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+    <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">灰度发布相关学习笔记</h1>
+      <p class="meta"><time datetime="2014-03-02T00:00:00" pubdate>2014-03-02</time></p>
+</header>
+
+  <div class="entry-content"><p>知乎：<br />
+<a href="http://www.zhihu.com/question/20584476">http://www.zhihu.com/question/20584476</a><br />
+<a href="http://www.zhihu.com/question/21714205">http://www.zhihu.com/question/21714205</a><br />
+腾讯大讲堂：<br />
+<a href="http://djt.qq.com/article/view/16">http://djt.qq.com/article/view/16</a>  </p>
+<h2>灰度发布与灰度发布系统</h2>
+<p><strong>灰度发布</strong>是指在黑与白之间，能够平滑过渡的一种发布方式。灰度发布可以保证整体系统的稳定，在初始灰度的时候就可以发现、调整问题，以保证其影响度。  </p>
+<p>AB test就是一种灰度发布方式，让一部分用户继续用A，另一部分用户开始用B，如果用户对B没有什么反对意见，那么逐步扩大范围，把所有用户都迁移到B上面来。<br />
+内测发布也是一种灰度发布方式，只有内部员工可以体验到新版本，如此可以提前发现新版本的问题，及时调整，减少上线的风险。<br />
+AB test由于是从用户中分出一半来体验新版本，涉及的用户面较广，因而除非某个功能牵动大量的用户信息和数据信息，或者做迁移的成本很高，或者实在无法准确判断用户对两功能的态度，否则尽量不要采用AB test。AB test会给用户带来体验上的困惑，如果在软件类产品上还容易导致垃圾功能堆砌和冗余。一般情况下，内部体验就能发现新功能的明显问题，如果只是想提前发现问题的话，使用内测灰度或白名单灰度即可。  </p>
+<p><strong>灰度发布系统</strong>，主要任务是从产品用户群中按照一定策略选取部分用户，让他们先行体验新版本的应用，通过收集这部分用户对新版本应用的显式反馈（论坛、微博）或隐式反馈（应用自身统计数据），对新版本应用的功能、性能、稳定性等指标进行评判，进而决定继续放大新版本投放范围直至全量升级或回滚至老版本。  </p>
+<h2>灰度发布系统的要素</h2>
+<p>从灰度发布系统的描述可以得出灰度发布系统需要具备的一些要素：</p>
+<h3>用户标识</h3>
+<p>用于区分用户，辅助数据统计，保证灰度发布过程中用户体验的连贯性（避免用户在新旧版本中跳变，匿名Web应用比较容易有这个问题）。匿名Web应用可采用IP、Cookie等；需登录的应用可直接采用应用的帐号体系；不登录的应用则难以有连贯的用户标识，一旦缓存被清（用户主动清或系统清除）则会丢失用户标识。</p>
+<h3>目标用户选取策略</h3>
+<p>即选取哪些用户先行体验新版本，是强制升级还是让用户自主选择等。可考虑的因素很多，包括但不限于地理位置、用户终端特性（如分辨率、性能）、用户自身特点（性别、年龄、忠诚度等）、用户标识尾号、号码包。当利用灰度的概念来实现测试版或内测版时，可以考虑白名单用户，内部名单用户等特殊用户的号码包。  </p>
+<p>对于细微修改（如文案、少量控件位置调整）可直接强制升级，对于大型升级，应让用户自主选择，最好能够提供让用户自主回滚至旧版本的渠道。<br />
+对于客户端应用，可以考虑类似Chrome的多channel升级策略，让用户自主选择采用stable、beta、unstable channel的版本。在用户有明确预期的情况下自行承担试用风险。  </p>
+<p>除了传统的这种用户被选择的灰度策略外，类似Gmail Labs的新特性实验室，让用户自己选择一些未正式发布的新特性进行体验，不喜欢可以关闭，在这个过程中，用户自己选择吃螃蟹也当了Google的小白鼠。这种做法更加尊重用户，更加高明。用户完全自愿，随时可以选择体验或关闭，而且可以自由选择多个自己喜欢的新特性体验。<br />
+但是，要享受新特性实验室的好处，也是有代价的：  </p>
+<ol>
+<li>要开发一个labs平台实现新特性上架、独立尝试的功能，这可能需要改动Gmail的前后台架构；  </li>
+<li>新特性要按照一定规范来实现以适应labs平台，这可能会增加工作量；  </li>
+<li>体验的用户增多后，对系统压力变大，因为每个用户调用的界面都是不一样的个性化的。  </li>
+</ol>
+<p>当然，对Google来说这些代价都不算问题。如果有实力还是建议尝试。</p>
+<h3>数据反馈</h3>
+<p><strong>用户数据反馈</strong>：在得到用户允许的前提下，收集用户的使用新版本应用的情况。如客户端性能、客户端稳定性、使用次数、使用频率等。用于与旧版本进行对比，决策后续是继续扩大新版本投放范围还是回滚。  </p>
+<p><strong>服务端数据反馈</strong>：新版本服务端性能、服务端稳定性等，作用与用户数据反馈类似。  </p>
+<h3>新版本回滚策略</h3>
+<p>当新版本灰度发布表现不佳时，应回滚至旧版本。对于纯粹的Web应用而言，回滚相对简单。主要难点在于用户数据的无缝切换。对于客户端应用，如果期待用户自行卸载新版本另行安装旧版本，成本和流失率都太高。可以考虑通过快速另行发布新版本，利用升级来“回滚”，覆盖上次灰度发布的修改。  </p>
+<p>对于移动客户端，新版本发布成本较高，需要Appstore、Market审核。不过如果是客户端中的用h5实现的部分，则拥有web快速迭代的优点，可以方便地升级和回滚。故客户端中常变化的部分可以考虑用h5实现。</p>
+<h3>灰度发布的用户反馈处理</h3>
+<p>对于较大型的灰度发布，产品需要收集各渠道的用户反馈，将用户反馈对比通过隐式数据反馈得到的结论后，综合考虑应对策略。<br />
+有时候还需要配合公关运营支持，用于及时处理用户在微博、博客等渠道给出的“显式反馈”。</p>
+<h2>客户端的灰度发布</h2>
+<p>客户端应用（无论PC端还是移动端）的灰度发布要比Web应用的灰度发布更为复杂，因为应用运行在用户持有的终端上，数据采集和回滚都更为困难，但可采集的数据类型要更加丰富。</p>
+<p>首发是android常用的一种灰度方式，优先在某个渠道发布，之后根据用户反馈再全量发布。</p>
+<p>而iOS的渠道相比要少很多。iOS 平台的灰度，大体分为app store，越狱，内部测试三种类型，越狱和内部测试两种类型下还要划分不同的渠道。<br />
+iOS灰度发布通常不建议在越狱渠道上做。因为，在大渠道（比如 91）做灰度会影响收入指标，尤其是电商App；而如果在小渠道做灰度又由于量太小而达不到灰度的效果，而且还有被大渠道抓包的风险。因此，可行的解决方案就剩下有分发权限的299刀企业高级开发者帐号，只要培养足够的用户量，这个样本容量还是足够大的。<br />
+当然，要自搞个新开发者帐号，要考虑如何回收这个帐号发出去的版本都是麻烦事，如果只是为了测试某个功能，也可以就拿 91 渠道做灰度。但这样做，表面上 PM 好像实现了目的，RD却必然叫苦连天，是个亏本买卖，并不值当。  </p>
+<h2>灰度发布的前提</h2>
+<p>最后，一切的前提都是：  </p>
+<ol>
+<li>做好版本管理（一个有条理、敬畏秩序的、能写代码的发布经理）；</li>
+<li>打好数据桩（重点注意按版本观测所有数据，数据要贯通不要片段）；</li>
+<li>灰度版本有回收能力，一般就是强制升级下一个正式版。（不然老板时不时因为微博用户报告的某个灰度版本的 bug 来让你擦屁股就不用干正事了）。</li>
+</ol>
+<p>好的方法论（灰度发布）貌似能解决的一切问题，但是把这个推行起来的那个人，说起来都是泪。</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">linliuzi</span>
+  </span>
+<time datetime="2014-03-02T00:00:00" pubdate>2014-03-02</time>  <span class="categories">
+    <a class="category" href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>
+    <a class="category" href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>
+  </span>
+</p>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/05/17/new_20140517.html">产品经理，你就是你的产品——转自朋友圈</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/05/10/new_20140510.html">做一个靠谱有爱的PM</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/05/02/new_20140502.html">进化及其他的修修补补——读道金斯《地球上最伟大的表演：进化的证据》</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/04/27/new_20140427.html">搜索PM工作小结</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/04/23/new_20140423.html">提问的智慧——转Eric Steven Raymond</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://linliuzi.github.io/category/enjoy-life.html">Enjoy Life</a></li>
+        <li><a href="http://linliuzi.github.io/category/others.html">Others</a></li>
+        <li><a href="http://linliuzi.github.io/category/pm-study.html">PM Study</a></li>
+        <li><a href="http://linliuzi.github.io/category/reading-notes.html">Reading Notes</a></li>
+        <li><a href="http://linliuzi.github.io/category/resource-share.html">Resource Share</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>,    <a href="http://linliuzi.github.io/tag/sheng-huo.html">生活</a>,    <a href="http://linliuzi.github.io/tag/chang-shi.html">常识</a>,    <a href="http://linliuzi.github.io/tag/jing-pin.html">竞品</a>,    <a href="http://linliuzi.github.io/tag/du-shu-bi-ji.html">读书笔记</a>,    <a href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>,    <a href="http://linliuzi.github.io/tag/guan-hou-gan.html">观后感</a>,    <a href="http://linliuzi.github.io/tag/ti-yan.html">体验</a>,    <a href="http://linliuzi.github.io/tag/ren-sheng.html">人生</a>,    <a href="http://linliuzi.github.io/tag/yun-ying.html">运营</a>,    <a href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>,    <a href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>,    <a href="http://linliuzi.github.io/tag/dian-shang.html">电商</a>,    <a href="http://linliuzi.github.io/tag/si-xiang.html">思想</a>,    <a href="http://linliuzi.github.io/tag/shu-ju.html">数据</a>,    <a href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>,    <a href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>,    <a href="http://linliuzi.github.io/tag/sui-bi.html">随笔</a>,    <a href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>  </section>
+
+
+    <section>
+        <h1>Social</h2>
+        <ul>
+            <li><a href="http://linliuzi.github.io/" type="application/rss+xml" rel="alternate">RSS</a></li>
+            <li><a href="http://heifrank.github.io" target="_blank">heifrank blog</a></li>
+            <li><a href="http://www.google.com" target="_blank">google</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h2>
+        <ul>
+            <li><a href="http://www.huxiu.com/" target="_blank">huxiu</a></li>
+            <li><a href="http://www.zhihu.com/" target="_blank">zhihu</a></li>
+            <li><a href="http://www.36kr.com/" target="_blank">36Kr</a></li>
+            <li><a href="http://www.geekpark.net/" target="_blank">geekpark</a></li>
+        </ul>
+    </section>
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - linliuzi -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+	<script type="text/javascript">
+	  var disqus_shortname = 'schnee27';
+          var disqus_identifier = '/pages/2014/03/02/new_20140302.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2014/03/02/new_20140302.html';
+          var disqus_title = '灰度发布相关学习笔记';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
