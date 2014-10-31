@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>网贷记账应用“库牛”设计全过程之一——前期分析</title>
+  <meta name="author" content="linliuzi">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://linliuzi.github.io/favicon.png" rel="icon">
+  <link href="http://linliuzi.github.io/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://linliuzi.github.io/theme/js/modernizr-2.0.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/ender.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://linliuzi.github.io/">静待水到渠成</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://linliuzi.github.io/" rel="subscribe-rss">RSS</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://linliuzi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+    <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">网贷记账应用“库牛”设计全过程之一——前期分析</h1>
+      <p class="meta"><time datetime="2014-10-07T00:00:00" pubdate>2014-10-07</time></p>
+</header>
+
+  <div class="entry-content"><h3>起意</h3>
+<p>8月底离职后，出去旅游了一趟，又安静地看了十几本书，如此过了一个月。 9月底我这个小财迷无意中开始关注网络借贷。<br />
+至今一个月不到的时间，我加入了 9个网贷QQ 群，关注了 21个网贷公众号，体验过51家网贷网站和 17个网贷APP ，并投资过 14家网贷平台。随着自己投资的项目变多，我开始希望能有一个应用可以方便地记录我的投资账目，在 QQ群里也经常能看到有群友求推荐网贷记账应用的，可见网贷记账的需求在现实中是真实存在的。  </p>
+<p>我下载了市面上现有的网贷记账的工具，但发现并不能很好的满足我的需求。<br />
+网贷记账，网贷秘书，网贷管家，网贷之星，网贷雷达，网贷账本， ppkit，山里娃网贷计算器等现有的网贷记账工具，要么功能太过简单不能满足需求，要么功能太过复杂使用成本过高体验不佳，要么没有不联网的客户端应用，要么是自动化记账需要提供网贷平台的账号密码存在安全隐患……总之，并不尽如人意。<br />
+而随手记、挖财等市面现有的通用记账应用，也没有针对网贷做优化，不便于处理投资这种有去有回的特殊支出，也没有自动根据投资生成回款等功能。</p>
+<p>于是，我萌生了自己设计一个网贷记账应用的想法。<br />
+但是， <strong>真实存在且尚未得到很好满足的需求，并非就值得做。 我们需要思考为何需求至今尚未得到很好满足。是否需求不够强烈？是否有此需求的用户群体太小？是否该需求发展前景不佳只是短期内的需求？等等。</strong>  </p>
+<h3>第一步，分析网贷记账应用能提供的服务</h3>
+<p><strong>网贷记账工具的核心服务是：让用户清楚自己的网贷资金状况。</strong><br />
+具体的说，就是让用户清楚自己在每个平台每个项目投资的得失情况，清楚回款时间方便对回款资金进行复投或提现等处理等等。  </p>
+<p>很显然，如果用户投资的项目和平台数量较少，用户完全可以用已有的通用记账工具甚至是Excel或记事本来实现记账和提醒功能。如果用户投资的平台只有一个，由于每个网贷平台都会提供自己平台上用户投资情况的一些资金状况展示和统计功能，用户甚至可以直接在该网贷平台上获得专业网贷记账应用所能提供的服务。<br />
+可见，<strong>专门的网贷记账应用所提供的服务，只有网贷交易频繁的在多个平台多个项目上有投资的用户会有需求。</strong>  </p>
+<p>另外，这个服务是强需求还是弱需求呢？<br />
+由于市面上满足该服务的应用很少，可见<strong>该需求至少至今仍不算太强的需求，或者说通过Excel等现有工具能基本得到满足并没有一定非要出一个专业的网贷记账应用不可。</strong>  </p>
+<h3>第二步，分析当前需要网贷记账服务的用户规模</h3>
+<p>继而，我们对有网贷记账应用需求的用户规模做估计。  </p>
+<p>一种方法，我们<strong>假设活跃的网贷投资用户即网贷交易频繁的用户</strong>，假设的根据是他们交易频繁所以为了规避风险需要形成圈子互通消息。<br />
+就我所加的9个QQ群来看，网贷的圈子很小，大部分活跃网贷用户都同时在好几个群里。假设活跃的网贷用户都加入了网贷天眼这一名气较大的第三方平台的QQ群，目前网贷天眼有4个2000人的QQ群，则活跃的网贷用户应该在1万以内。根据统计，截至今年6月底，我国投资过网贷的用户总数为44万，数量为十万级别，从活跃比例可以推测活跃用户量级在万级别是合理的。  </p>
+<p>另一种方法，<strong>估算使用已有的网贷记账工具的用户规模。</strong><br />
+这个可以先借由已有网贷工具的下载量、讨论数等加以估算使用已有网贷记账工具的用户规模。第三方网贷门户平台，网贷之家社区有个<a href="http://bbs.wangdaizhijia.com/forum-142-1.html">网贷工具版面</a>，自2012年12月28日发表第一帖至今将近2年的时间里，该版面只有125个主题，2825个贴子。而且该版面除了网贷记账工具外还有自动投标等其他工具，可见从绝对数值看，该版面并不火爆。<br />
+再细看该版面最火的一个网贷记账贴子，excel网贷记账本的贴子，自2014年4月27日至今5个多月的时间里，共有307个回复，9618次查看记录。<br />
+往大了估计，假设有网贷记账服务需求的用户都搜索过相关信息，查看过该帖子，则使用原有网贷记账工具的用户规模也不过是万级别。  </p>
+<p>根据上述两种方法，<strong>假设活跃的网贷用户都使用我的新的专门的网贷记账应用，或者所有使用已有网贷记账工具的用户都改为使用我的网贷记账应用，用户量级也只是在万级别</strong>。</p>
+<h3>第三步，分析网贷记账服务的用户前景</h3>
+<p>虽然目前网贷记账服务的用户规模只有万级别，但是有没有可能之后网贷行业规模继续壮大，使网贷用户增长，从而迎来网贷记账工具的春天呢？这个我们需要分析下网贷的发展前景。  </p>
+<p>专业的展望我就不在此列举了，而且我也米有那个能力呀！一句话说吧，<strong>网贷终归只是个垂直的小规模的行业</strong>，虽然国内因为金融行业竞争不足、利率管制等原因在当前看似发展迅猛，但是随着利率市场化的发展，我国的网贷最终也会像美国等发达国家一样隐退为金融行业的一个小的分支。不可能有所谓的“颠覆”！  </p>
+<p>所以，<strong>网贷记账的需求无论有多强烈终归只是个小众的需求，受限于行业的规模，不大可能会有大规模用户爆发</strong>。</p>
+<h3>第四步，如果我就是要做网贷记账服务！</h3>
+<p>好吧，无论用户量级有多小，如果我就是要做网贷记账服务，就算是方便我自己也好，那我们来预测下未来的发展吧。<br />
+既然决定做了，就勇敢地往前看嘛。  </p>
+<p>我们先来预测下用户使用频率，工具型应用嘛总有这个问题的。<br />
+市场上，随手记等普通记账应用由于大部分用户的收入支出较为固定，所以用户比较没有持续记账的动力。不过，网贷记账由于其用户交易较频繁，本身资金流变动较多，故<strong>记账动力较足，使用频率还是比较高的</strong>。  </p>
+<p>其次，我们往“钱”看，预测下网贷记账应用的盈利模式。<br />
+一个比较容易想到的盈利模式，就是跟其他记账应用一样，用户发展起来后通过将用户量转化为理财投资产品的入口流量。初期可以在应用中提供一键去投资平台的功能，后续可以设立专门的理财投资产品入口，甚至可以提供自己关注的理财投资产品的动态和最新标的的功能。（嗯嗯，其实插一点平台广告也是可以的~~）<br />
+从这个盈利模式考虑，网贷记账后续<strong>需要与网贷天眼这种理财投资平台的门户合作</strong>，才能更好地获取到理财投资产品的动态和入口，否则自己一家家平台去沟通还是很苦力的。  </p>
+<p>如此说来，如果果真做起来了，网贷记账应用的钱景是可观的。虽然用户群体很小，但活跃的网贷用户都是高资产的用户，所以他们还是很值钱的。<strong>在金融价值链上，网贷记账应用只提供流量和数据参考即可。</strong></p>
+<h3>后记</h3>
+<p>通过前期分析，可知<strong>网贷记账需求真实存在，但并不是很强的需求；而且当前用户规模在万级别体量很小，未来也不大可能会有大规模用户爆发；但是作为金融价值链中流量入口，其盈利模式是比较清晰的。</strong></p>
+<p>总之，<strong>这个事，不适合创业，但自己设计着玩嘛还是可以的，就当作一次实践试验嘛</strong>~</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">linliuzi</span>
+  </span>
+<time datetime="2014-10-07T00:00:00" pubdate>2014-10-07</time>  <span class="categories">
+    <a class="category" href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>
+    <a class="category" href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>
+    <a class="category" href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>
+  </span>
+</p>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/18/new_20141018.html">为什么说99%的P2P金融平台即将死亡？——转自微信</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/07/new_20141007.html">网贷记账应用“库牛”设计全过程之一——前期分析</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/01/new_20141001.html">江南愤青对互联网金融的解读、预言</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/09/12/new_20140912.html">允许言论自由的pm贵族专制</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/08/21/new_20140821.html">总有一个人要先走——转自微信</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://linliuzi.github.io/category/enjoy-life.html">Enjoy Life</a></li>
+        <li><a href="http://linliuzi.github.io/category/others.html">Others</a></li>
+        <li><a href="http://linliuzi.github.io/category/pm-study.html">PM Study</a></li>
+        <li><a href="http://linliuzi.github.io/category/reading-notes.html">Reading Notes</a></li>
+        <li><a href="http://linliuzi.github.io/category/resource-share.html">Resource Share</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>,    <a href="http://linliuzi.github.io/tag/gan-wu.html">感悟</a>,    <a href="http://linliuzi.github.io/tag/chang-shi.html">常识</a>,    <a href="http://linliuzi.github.io/tag/ti-yan.html">体验</a>,    <a href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>,    <a href="http://linliuzi.github.io/tag/du-shu-bi-ji.html">读书笔记</a>,    <a href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>,    <a href="http://linliuzi.github.io/tag/yun-ying.html">运营</a>,    <a href="http://linliuzi.github.io/tag/ren-sheng.html">人生</a>,    <a href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>,    <a href="http://linliuzi.github.io/tag/sheng-huo.html">生活</a>,    <a href="http://linliuzi.github.io/tag/hu-lian-wang-jin-rong.html">互联网金融</a>,    <a href="http://linliuzi.github.io/tag/si-xiang.html">思想</a>,    <a href="http://linliuzi.github.io/tag/shu-ju.html">数据</a>,    <a href="http://linliuzi.github.io/tag/guan-hou-gan.html">观后感</a>,    <a href="http://linliuzi.github.io/tag/jing-pin.html">竞品</a>,    <a href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>,    <a href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>,    <a href="http://linliuzi.github.io/tag/dian-shang.html">电商</a>,    <a href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>,    <a href="http://linliuzi.github.io/tag/she-ji.html">设计</a>,    <a href="http://linliuzi.github.io/tag/sui-bi.html">随笔</a>  </section>
+
+
+    <section>
+        <h1>Social</h2>
+        <ul>
+            <li><a href="http://linliuzi.github.io/" type="application/rss+xml" rel="alternate">RSS</a></li>
+            <li><a href="http://heifrank.github.io" target="_blank">heifrank blog</a></li>
+            <li><a href="http://www.google.com" target="_blank">google</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h2>
+        <ul>
+            <li><a href="http://www.huxiu.com/" target="_blank">huxiu</a></li>
+            <li><a href="http://www.zhihu.com/" target="_blank">zhihu</a></li>
+            <li><a href="http://www.36kr.com/" target="_blank">36Kr</a></li>
+            <li><a href="http://www.geekpark.net/" target="_blank">geekpark</a></li>
+        </ul>
+    </section>
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - linliuzi -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+	<script type="text/javascript">
+	  var disqus_shortname = 'schnee27';
+          var disqus_identifier = '/pages/2014/10/07/new_20141007.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2014/10/07/new_20141007.html';
+          var disqus_title = '网贷记账应用“库牛”设计全过程之一——前期分析';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
