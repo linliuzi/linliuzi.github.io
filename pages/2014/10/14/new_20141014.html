@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>网贷记账应用“库牛”设计全过程之三——对象分析</title>
+  <meta name="author" content="linliuzi">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://linliuzi.github.io/favicon.png" rel="icon">
+  <link href="http://linliuzi.github.io/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://linliuzi.github.io/theme/js/modernizr-2.0.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/ender.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://linliuzi.github.io/">静待水到渠成</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://linliuzi.github.io/" rel="subscribe-rss">RSS</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://linliuzi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+    <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">网贷记账应用“库牛”设计全过程之三——对象分析</h1>
+      <p class="meta"><time datetime="2014-10-14T00:00:00" pubdate>2014-10-14</time></p>
+</header>
+
+  <div class="entry-content"><h3>网贷记账所涉及的四大对象</h3>
+<p><strong>网贷投资记账过程中，共有四种对象，从小到大分别为交易、项目、平台、总账户。</strong>  </p>
+<p><strong>交易</strong>，有交易日期，交易类型，交易金额，交易平台，备注等基础特性。<br />
+其中，交易类型根据资金流可以得出，详细地列举的话，有以下16种：充值，提现，投标，回款，逾期，坏账，转让债权，购买债权，站岗资金坏账，平台奖励，提现手续费，充值手续费，利息管理费，转让折让金，转让服务费，VIP费用等等。<br />
+但这16种交易类型并非彼此独立，有些甚至是并生并存的，比如充值与充值手续费，提现与提现手续费等等。<br />
+另外，不同的交易类型，还会在交易的基础属性下有其他的属性。（想到了父类和子类的关系了╮(╯▽╰)╭）  </p>
+<p><strong>项目</strong>，有项目名称，平台名称，项目利率，项目期限，还款方式，投标时间，项目状态，初始债权，已转出债权，已回款本息，待回款本息，当前持有债权，项目下交易明细等特性。<br />
+其中，项目状态根据资金流可以得出，有在投，逾期，坏账，结束四种。  </p>
+<p><strong>平台</strong>，有平台名称，综合年化收益，投资占比，在投本金，待收利息，已获收益，逾期金额，坏账金额，平台下项目明细，平台下交易明细等特性。<br />
+其中，平台投资占比=平台在投本金÷该用户在网贷的总在投本金。<br />
+平台综合年化收益=收益÷∑（本金X投资天数）X365X100%。<br />
+已获收益=结束项目利息总和-各种手续费。  </p>
+<p><strong>总账户</strong>，有总在投本金，总待收利息，累计盈利，平台明细，项目明细，交易明细等特性。<br />
+总账户，其实相当于一个平台的平台，比平台属性增加一个平台明细的特性。  </p>
+<p>很显然，项目是由交易生成的，如果知道了项目相关的投资、回款等交易信息，自然就能得出对应的项目信息。平台和总账户信息也可以由交易信息得出，所以<strong>交易是整个应用中最核心的对象。</strong>  </p>
+<h3>交易的详细对象分析</h3>
+<p>接下来，我们详细对交易进行分析，<strong>关键是对交易类型这个属性进行分析优化。</strong>  </p>
+<p>首先，我们可以很容易地通过给充值手续费收费标准（元每笔或充值本金百分比的值）而把充值手续费和充值两种交易类型对应起来，从其中任意一个推出另一个，即这两个其实只要保留其中之一即可。同理，提现手续费和提现也是只需保留一个。<br />
+另外，利息管理费是与每一笔利息回款绑在一起的，可以在投资或购买债权时添加利息管理费的属性来推出利息管理费。同理，可以在转让债权中添加转让折让金和转让服务费的属性，在购买债券中添加转让折让金的属性。从而我们可以删去利息管理费、转让折让金、转让服务费三个交易类型。<br />
+现在还剩下充值/充值手续费，提现/提现手续费，投标，回款，逾期，坏账，转让债权，购买债权，站岗资金坏账，平台奖励，VIP费用共11种交易类型。  </p>
+<p>再次审视这11种交易类型，继续简化。<br />
+投标这个类型是最重要的最必不可少的，购买债券是一种特殊的投标，它与投标可能有部分属性不同，可以考虑把二者合并，将项目和债券作为投标的两种子类型。<br />
+充值手续费，提现手续费，VIP 费用可以合并为收费一个交易类型，下设充值费、提现费、VIP费用、其他四个子类型。充值和提现的本金是多少其实只有在站岗资金坏账时才会影响资金流，故而完全可以用充值手续费、提现手续费、站岗资金坏账来代替充值和提现的类型。<br />
+平台奖励类似于收费，可以命名为奖励这个交易类型，下设注册红包、邀请好友、分享活动、其他四个子类型。<br />
+回款、逾期、坏账和转让债权都是基于某一个投标衍生出来的后续交易。应用可以自动根据一个投标生成相应的回款，让用户处理标识为回款、逾期、坏账。即用户只需要选择一笔回款进行操作即可，这样可以减少用户的操作。同理，用户记录转让债权时也可以先选择一笔投标进行操作。鉴于坏账和站岗资金坏账的区别在于站岗资金坏账可以不用关联回款，故而其实可以把二者合并为坏账，但是允许坏账不关联回款。如此，回款、逾期、坏账、转让债权这四个交易类型，由于可以合并部分流程。  </p>
+<p>最终，交易类型归并如下：  </p>
+<ol>
+<li>投资：分项目和债权共两个子类型。  </li>
+<li>收费：分充值费、提现费、VIP会员费、其他共四个子类型。  </li>
+<li>奖励：分注册红包、邀请好友、分享活动、其他共四个子类型。（PS：后来发现其实比较常见的还有充值奖励，不过这个好改哈~）  </li>
+<li>其他：分回款、逾期、坏账和转让债权共四个子类型。选择具体子类型后需要选择关联的回款或投资，坏账可以不关联直接跳过选择。  </li>
+</ol>
+<p>继而，<strong>根据确定的交易类型，需要分析每个类型下所特有的特性</strong>，如下图所示。<br />
+其中，对转让债权的类型进行下说明。根据：折让金=折让比例X债券原值，公允价格=折让金+投资金额，应收利息=公允价格-债券原值，上一次付息日=起息日-（应收利息÷日化利率），转让债权并不需要知道折让金、公允价格、原债权期限等数据，因此我们可以减少用户所需要输入的数据。<br />
+另外，投资时的续投奖励、投标奖励都是在投资金额上的奖励比例，所以统一为奖励利率一个特性。  </p>
+<p><img alt="图片" src="https://lh6.googleusercontent.com/-qCRqZ7uod0M/VFiZY-zHPfI/AAAAAAAAAkU/rsJ0t3t8qTo/w621-h407-no/%E5%BA%93%E7%89%9BUML%E7%B1%BB%E5%9B%BE.jpg" title="网贷记账应用对象分析" /></p>
+<p>注意，上图的特性只是需要用户提供或者允许用户修改的属性。<br />
+交易有部分特性和项目、平台、总账户的特性是可以根据这些数据推导出来的，不需要用户提供，并没有列举在图中。  </p>
+<h3>后记</h3>
+<p>在整个设计过程中，我给各个对象所设计的特性，经历了一个从多到少的过程。<br />
+刚开始的时候，需要枚举各个对象的所有可能的特性，以免有所遗漏；然后，需要对每个特性进行分析，哪些特性是用户需要给我们提供的（下面简称为元数据），哪些特性是从元数据可以推导出来的但是可能有变化因此需要允许用户修改的，哪些特性是从元数据推导出来后用户不会修改但需要偶尔查看的，哪些特性是用户不关心的可以删去的……这样把特性进行一定的删减和分类。<br />
+这样，就可以<strong>让用户只需要输入最少的数据，却能得到他们所需要的所有的数据。</strong>  </p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">linliuzi</span>
+  </span>
+<time datetime="2014-10-14T00:00:00" pubdate>2014-10-14</time>  <span class="categories">
+    <a class="category" href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>
+    <a class="category" href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>
+    <a class="category" href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>
+  </span>
+</p>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/11/01/new_20141101.html">五周年纪念</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/18/new_20141018.html">为什么说99%的P2P金融平台即将死亡？——转自微信</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/14/new_20141014.html">网贷记账应用“库牛”设计全过程之三——对象分析</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/12/new_20141012.html">网贷记账应用“库牛”设计全过程之二——流程梳理</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/07/new_20141007.html">网贷记账应用“库牛”设计全过程之一——前期分析</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://linliuzi.github.io/category/enjoy-life.html">Enjoy Life</a></li>
+        <li><a href="http://linliuzi.github.io/category/others.html">Others</a></li>
+        <li><a href="http://linliuzi.github.io/category/pm-study.html">PM Study</a></li>
+        <li><a href="http://linliuzi.github.io/category/reading-notes.html">Reading Notes</a></li>
+        <li><a href="http://linliuzi.github.io/category/resource-share.html">Resource Share</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>,    <a href="http://linliuzi.github.io/tag/gan-wu.html">感悟</a>,    <a href="http://linliuzi.github.io/tag/chang-shi.html">常识</a>,    <a href="http://linliuzi.github.io/tag/ti-yan.html">体验</a>,    <a href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>,    <a href="http://linliuzi.github.io/tag/du-shu-bi-ji.html">读书笔记</a>,    <a href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>,    <a href="http://linliuzi.github.io/tag/yun-ying.html">运营</a>,    <a href="http://linliuzi.github.io/tag/ren-sheng.html">人生</a>,    <a href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>,    <a href="http://linliuzi.github.io/tag/sheng-huo.html">生活</a>,    <a href="http://linliuzi.github.io/tag/hu-lian-wang-jin-rong.html">互联网金融</a>,    <a href="http://linliuzi.github.io/tag/si-xiang.html">思想</a>,    <a href="http://linliuzi.github.io/tag/shu-ju.html">数据</a>,    <a href="http://linliuzi.github.io/tag/guan-hou-gan.html">观后感</a>,    <a href="http://linliuzi.github.io/tag/jing-pin.html">竞品</a>,    <a href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>,    <a href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>,    <a href="http://linliuzi.github.io/tag/dian-shang.html">电商</a>,    <a href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>,    <a href="http://linliuzi.github.io/tag/she-ji.html">设计</a>,    <a href="http://linliuzi.github.io/tag/sui-bi.html">随笔</a>  </section>
+
+
+    <section>
+        <h1>Social</h2>
+        <ul>
+            <li><a href="http://linliuzi.github.io/" type="application/rss+xml" rel="alternate">RSS</a></li>
+            <li><a href="http://heifrank.github.io" target="_blank">heifrank blog</a></li>
+            <li><a href="http://www.google.com" target="_blank">google</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h2>
+        <ul>
+            <li><a href="http://www.huxiu.com/" target="_blank">huxiu</a></li>
+            <li><a href="http://www.zhihu.com/" target="_blank">zhihu</a></li>
+            <li><a href="http://www.36kr.com/" target="_blank">36Kr</a></li>
+            <li><a href="http://www.geekpark.net/" target="_blank">geekpark</a></li>
+        </ul>
+    </section>
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - linliuzi -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+	<script type="text/javascript">
+	  var disqus_shortname = 'schnee27';
+          var disqus_identifier = '/pages/2014/10/14/new_20141014.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2014/10/14/new_20141014.html';
+          var disqus_title = '网贷记账应用“库牛”设计全过程之三——对象分析';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>

@@ -53,6 +53,25 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="http://linliuzi.github.io/pages/2014/10/14/new_20141014.html">网贷记账应用“库牛”设计全过程之三——对象分析</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-14T00:00:00" pubdate>2014-10-14</time></p>
+</header>
+
+  <div class="entry-content"><h3>网贷记账所涉及的四大对象</h3>
+<p><strong>网贷投资记账过程中，共有四种对象，从小到大分别为交易、项目、平台、总账户。</strong>  </p>
+<p><strong>交易</strong>，有交易日期，交易类型，交易金额，交易平台，备注等基础特性。<br />
+其中，交易类型根据资金流可以得出，详细地列举的话，有以下16种：充值，提现，投标，回款，逾期，坏账，转让债权，购买债权，站岗资金坏账，平台奖励，提现手续费，充值手续费，利息管理费，转让折让金，转让服务费，VIP费用等等。<br />
+但这16种交易类型并非彼此独立，有些甚至是并生并存的，比如充值与充值手续费，提现与提现手续费等等。<br />
+另外，不同的交易类型，还会在交易的基础属性下有其他的属性。（想到了父类和子类的关系了╮(╯▽╰)╭）  </p>
+<p><strong>项目</strong>，有项目名称，平台名称，项目利率，项目期限，还款方式，投标时间，项目状态，初始债权 ...</p></div>
+  <footer>
+    <a rel="full-article" href="http://linliuzi.github.io/pages/2014/10/14/new_20141014.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="http://linliuzi.github.io/pages/2014/10/12/new_20141012.html">网贷记账应用“库牛”设计全过程之二——流程梳理</a>
       </h1>
       <p class="meta"><time datetime="2014-10-12T00:00:00" pubdate>2014-10-12</time></p>
@@ -258,39 +277,6 @@
     <a rel="full-article" href="http://linliuzi.github.io/pages/2014/05/10/new_20140510.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="http://linliuzi.github.io/pages/2014/04/27/new_20140427.html">搜索PM工作小结</a>
-      </h1>
-      <p class="meta"><time datetime="2014-04-27T00:00:00" pubdate>2014-04-27</time></p>
-</header>
-
-  <div class="entry-content"><div class="highlight"><pre><span class="err">从去年</span><span class="mi">11</span><span class="err">月</span><span class="mi">25</span><span class="err">日入职，除去寒假一个月，算来也已经满</span><span class="mi">4</span><span class="err">个月了。</span>
-<span class="err">却丝毫没有觉得枯燥厌烦，依旧每天都感觉到压力和成长！</span>
-
-<span class="err">工作的重心从搜索优化转移到数据挖掘和一点点客户端设计的需求。</span>
-<span class="err">当然，搜索的优化是没有止境的，本不能忘，只是暂时不会有太大的优化。</span>
-
-<span class="err">一直认为，走走应该停停，思考和总结才能真正成长。</span>
-<span class="err">于是，这个周末趁闲思考了下自己这</span><span class="mi">4</span><span class="err">个月的搜索工作，试图做个小结。</span>
-<span class="err">其中，大多数是自己的工作积累，当然不可避免会有导师的指导和看过的相关学习资料的影响。</span>
-</pre></div>
-
-
-<p>在信息爆炸的时代，搜索是我们查询自己所需信息的得力助手。<br />
-无论是大搜索产品，还是其他产品中的小小搜索框，搜索称得上是一款产品的标配。<br />
-那，搜索究竟是做什么的呢？搜索PM的工作又是做什么的呢？  </p>
-<h3>搜索的目标</h3>
-<p><strong>搜索的目标，是帮助用户更快找到想要的结果项。</strong>  </p>
-<p>当然这是单纯的说法，对于终极目标为盈利的产品来说，搜索归根还是为KPI服务的。简单举例，搜索用户的目标一般是增加用户点击关注的比例；搜索商品的目标则是增加用户形成购买行为的比例。</p>
-<p>但是，是不是100%给用户他想要的，用户就满意呢？<br />
-不是的。<br />
-鬼脚七曾经在 ...</p></div>
-  <footer>
-    <a rel="full-article" href="http://linliuzi.github.io/pages/2014/04/27/new_20140427.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="http://linliuzi.github.io/category/pm-study2.html">&larr; Older</a>
 
@@ -300,6 +286,9 @@
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/14/new_20141014.html">网贷记账应用“库牛”设计全过程之三——对象分析</a>
+      </li>
       <li class="post">
           <a href="http://linliuzi.github.io/pages/2014/10/12/new_20141012.html">网贷记账应用“库牛”设计全过程之二——流程梳理</a>
       </li>
@@ -311,9 +300,6 @@
       </li>
       <li class="post">
           <a href="http://linliuzi.github.io/pages/2014/07/27/new_20140727.html">pm工作中的思维方法</a>
-      </li>
-      <li class="post">
-          <a href="http://linliuzi.github.io/pages/2014/07/09/new_20140709.html">不忘初心之于产品经理</a>
       </li>
     </ul>
   </section>
