@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>网贷记账应用“库牛”设计全过程之五——用户界面设计</title>
+  <meta name="author" content="linliuzi">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://linliuzi.github.io/favicon.png" rel="icon">
+  <link href="http://linliuzi.github.io/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://linliuzi.github.io/theme/js/modernizr-2.0.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/ender.js"></script>
+  <script src="http://linliuzi.github.io/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://linliuzi.github.io/">静待水到渠成</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://linliuzi.github.io/" rel="subscribe-rss">RSS</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://linliuzi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+    <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">网贷记账应用“库牛”设计全过程之五——用户界面设计</h1>
+      <p class="meta"><time datetime="2014-10-19T00:00:00" pubdate>2014-10-19</time></p>
+</header>
+
+  <div class="entry-content"><p>虽然之前实习的时候也经常会做需求的界面设计，但是基本都只是产品中的部分需求，完整地思考整个产品的设计还是第一次。<br />
+有了前面的分析，对这个应用所需要提供的服务，所需要满足的任务场景都已经比较清晰了，不过具体实现时还是有很多的方案，如何想到尽可能多的方案，继而如何从中选择合适的一个方案都是很好的挑战。  </p>
+<p>设计之前，为了方便描述，我给这款网贷记账应用起了个名字——库牛，还画了logo和吉祥物有木有o(︶︿︶)o <br />
+库牛，取意于为你守护小金库的牛。其中，牛又取自股市的牛市，指普涨的市场，在此希望此应用能守护你的财富不断上涨的过程。<br />
+logo是带牛角的钥匙，是开启堆满财富的金库的钥匙。<br />
+吉祥物是可爱的小牛头像（你如果觉得不可爱那肯定是因为我画得不好o(︶︿︶)o 唉），吉祥物的名字叫小库好啦（好随意的名字嘻嘻~）  </p>
+<p><img alt="图片" src="https://lh5.googleusercontent.com/-YVwtsVW7mb0/VFnbJmsGWBI/AAAAAAAAAko/xktN82MctpA/w1044-h432-no/0logo.jpg" title="logo和吉祥物" /></p>
+<h3>APP框架整理</h3>
+<p>按照之前的分析，很显然，除了记账这一操作之外，库牛主要是提供各种信息的浏览。另外，记账操作只需要提供入口即可，并不需要展开操作的详细信息。<br />
+故而<strong>库牛作为一款信息浏览型的应用，可以用信息架构的方式来整理其框架。</strong>  </p>
+<p><strong>首先梳理库牛的信息</strong>，主要有以下几种：  </p>
+<ol>
+<li>记账入口</li>
+<li>待处理交易提醒</li>
+<li>近期回款提醒</li>
+<li>交易数据</li>
+<li>项目数据</li>
+<li>平台数据</li>
+<li>总账户数据</li>
+<li>帐号信息</li>
+<li>更多（设置、意见反馈等）</li>
+</ol>
+<p>其中有两个问题需要先确定下：</p>
+<ol>
+<li>记账入口是否要一直展示，还是只在部分页面展示即可？</li>
+<li>是否需要帐号系统？</li>
+</ol>
+<p>对于第一个问题，记账入口必须出现在应用的第一屏，此外可以根据具体页面的情况设计，并非一定要在所有页面出现。毕竟，虽然一直展示记账入口可以为记账提供一定的方便，但是也占据了宝贵的空间，所以还是要根据实际情况做平衡。<br />
+对于第二个问题，考虑到数据备份的重要性，需要数据备份，因此自然也需要帐号系统来对应每个帐号的数据。至于选用第三方帐号还是自有帐号没有太大影响。在此，考虑到用户注册后更改帐号的场景很少，可以用简化注册流程，永久记住帐号的方式来减少自有账号的弊端，所以后续设计过程中选用的是自有邮箱帐号。</p>
+<p><strong>其次，对库牛的信息进行整合归类。</strong>  </p>
+<ol>
+<li><strong>首页</strong>：记账入口，待处理交易提醒，近期回款提醒。</li>
+<li><strong>明细</strong>：交易数据。因为交易数据是统计数据中最多的，所以单独作为一个分类，项目、平台、总账户则作为另外一个分类。</li>
+<li><strong>统计</strong>：项目数据，平台数据，总账户数据。</li>
+<li><strong>更多</strong>：根据库牛的特点而细化为帐号信息，数据提醒，回款提醒，意见反馈，推荐我们，关于我们，退出登录。</li>
+</ol>
+<h3>APP功能层级和优先级判断</h3>
+<p>上述四个分类中，功能是彼此独立的，并不存在从属层级关系。不过首页的优先级最高，更多的优先级最低，明细和统计优先级居中，但根据使用频率高低，明细的优先级略高于统计。<br />
+即<strong>四个分类为扁平的功能层级，优先级则首页&gt;明细&gt;统计&gt;更多。</strong>  </p>
+<p>具体每个分类下的功能层级和优先级为  </p>
+<ol>
+<li><strong>首页</strong>：三者功能层级扁平，记账入口优先级最高，待处理交易提醒与近期回款提醒优先级相近。</li>
+<li><strong>明细</strong>：只有交易数据一项，不需说明。</li>
+<li><strong>统计</strong>：数据层级上，项目数据从属于平台数据从属于总账户数据，但是展示的时候，三者还是可以扁平化一同展示。</li>
+<li><strong>更多</strong>：功能扁平，优先级参照通用性分类即可。按照功能类别，可以进一步将帐号信息、数据提醒、回款提醒三者分为一组，意见反馈、推荐我们、关于我们为一组，退出登录单独作为一组。</li>
+</ol>
+<h3>APP导航选择</h3>
+<p>其实这样一分类，整个框架都很明晰了。接下来就是选择什么导航，每个分类下具体如何展示的问题了。  </p>
+<p>常见的导航类型有平铺页面，标签栏，树形结构，抽屉式等，各有优劣。<br />
+鉴于库牛的各个分类功能之间和分类下的子功能之间的层级都比较扁平化，所以不适合选择树形结构。另外，由于库牛只有4个大分类，所以适合选择标签类，这样相比平铺页面和抽屉式，可以更好地告知用户应用主要功能和当前所在的功能，用户点击一次即可访问到应用所有的主要功能。<br />
+虽然之前说记账入口并不必在每个页面出现，但是如今采用标签式，最多可以容纳5个标签，还是可以思考下是否要把记账作为中间的第三个标签展示的。不过考虑到在明细、统计、更多页面下，其实直接进入记账的需求并不大，最终还是不添加记账作为标签，而保留原定的四个标签。<br />
+故而，最终<strong>确定了标签栏的导航类型，共四个标签，依次为首页、明细、统计、更多，点击应用默认进入首页标签。</strong>  </p>
+<p>记账操作，属于编辑内容，需要弹出键盘等操作，不适合在下方保留标签栏，故而采用<strong>模态视图</strong>，专注于操作任务，同时也节省页面空间。<br />
+从明细、统计进入更详细的二级、三级等统计数据页面，为了增加数据的展示空间，也采用模态视图。  </p>
+<h3>APP具体页面设计</h3>
+<p><strong>具体页面的设计，我认为主要是两点，一是多看看其他的应用的设计多积累几种可选方案；二是实践，空想是很难判断好坏的，简单地画出来就能给你带来不少真实的体验。</strong>  </p>
+<p>具体页面设计的实践中，我对APP主要做了以下改变。  </p>
+<ol>
+<li>首页增加部分总账户数据的展示，以填补首页的过分空白。</li>
+<li>明细在列表方式外增加日历的展示方式，方便用户更直观地查看数据，并支持用户在某一个日子直接添加记账。</li>
+<li>在标签栏状态下，每个页面的右上角添加一个吉祥物头像，作为注册登录入口。嗯，这个可以增加用户黏性吧，我才不会告诉你我其实只是直觉觉得太空了。。。</li>
+</ol>
+<p>先贴几张我画的初稿吧，因为画的时候我太懒了，直接在原稿上改，所以现在都没有完整原稿的图了呀。。。<br />
+让我重新画个Axure我又懒。。  </p>
+<p>还是下篇看完整版吧，完整版我勉强做个Axure版的出来o(︶︿︶)o ，还是喜欢手绘嘛~~</p>
+<p><img alt="图片" src="https://lh6.googleusercontent.com/-3F_2hVyok_s/VFnbKyR3M3I/AAAAAAAAAkw/OgYeP5taqKs/w396-h553-no/0%E8%AE%BE%E8%AE%A1%E5%88%9D%E7%A8%BF.jpg" title="原型手绘初稿" /></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">linliuzi</span>
+  </span>
+<time datetime="2014-10-19T00:00:00" pubdate>2014-10-19</time>  <span class="categories">
+    <a class="category" href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>
+    <a class="category" href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>
+    <a class="category" href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>
+  </span>
+</p>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/11/01/new_20141101.html">五周年纪念</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/19/new_20141019.html">网贷记账应用“库牛”设计全过程之五——用户界面设计</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/18/new_20141018.html">为什么说99%的P2P金融平台即将死亡？——转自微信</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/15/new_20141015.html">网贷记账应用“库牛”设计全过程之四——任务分析</a>
+      </li>
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/14/new_20141014.html">网贷记账应用“库牛”设计全过程之三——对象分析</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://linliuzi.github.io/category/enjoy-life.html">Enjoy Life</a></li>
+        <li><a href="http://linliuzi.github.io/category/others.html">Others</a></li>
+        <li><a href="http://linliuzi.github.io/category/pm-study.html">PM Study</a></li>
+        <li><a href="http://linliuzi.github.io/category/reading-notes.html">Reading Notes</a></li>
+        <li><a href="http://linliuzi.github.io/category/resource-share.html">Resource Share</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>,    <a href="http://linliuzi.github.io/tag/gan-wu.html">感悟</a>,    <a href="http://linliuzi.github.io/tag/chang-shi.html">常识</a>,    <a href="http://linliuzi.github.io/tag/ti-yan.html">体验</a>,    <a href="http://linliuzi.github.io/tag/chan-pin.html">产品</a>,    <a href="http://linliuzi.github.io/tag/du-shu-bi-ji.html">读书笔记</a>,    <a href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>,    <a href="http://linliuzi.github.io/tag/yun-ying.html">运营</a>,    <a href="http://linliuzi.github.io/tag/ren-sheng.html">人生</a>,    <a href="http://linliuzi.github.io/tag/jiao-hu.html">交互</a>,    <a href="http://linliuzi.github.io/tag/sheng-huo.html">生活</a>,    <a href="http://linliuzi.github.io/tag/hu-lian-wang-jin-rong.html">互联网金融</a>,    <a href="http://linliuzi.github.io/tag/si-xiang.html">思想</a>,    <a href="http://linliuzi.github.io/tag/shu-ju.html">数据</a>,    <a href="http://linliuzi.github.io/tag/guan-hou-gan.html">观后感</a>,    <a href="http://linliuzi.github.io/tag/jing-pin.html">竞品</a>,    <a href="http://linliuzi.github.io/tag/xu-qiu.html">需求</a>,    <a href="http://linliuzi.github.io/tag/cheng-chang.html">成长</a>,    <a href="http://linliuzi.github.io/tag/dian-shang.html">电商</a>,    <a href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>,    <a href="http://linliuzi.github.io/tag/she-ji.html">设计</a>,    <a href="http://linliuzi.github.io/tag/sui-bi.html">随笔</a>  </section>
+
+
+    <section>
+        <h1>Social</h2>
+        <ul>
+            <li><a href="http://linliuzi.github.io/" type="application/rss+xml" rel="alternate">RSS</a></li>
+            <li><a href="http://heifrank.github.io" target="_blank">heifrank blog</a></li>
+            <li><a href="http://www.google.com" target="_blank">google</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h2>
+        <ul>
+            <li><a href="http://www.huxiu.com/" target="_blank">huxiu</a></li>
+            <li><a href="http://www.zhihu.com/" target="_blank">zhihu</a></li>
+            <li><a href="http://www.36kr.com/" target="_blank">36Kr</a></li>
+            <li><a href="http://www.geekpark.net/" target="_blank">geekpark</a></li>
+        </ul>
+    </section>
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - linliuzi -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+	<script type="text/javascript">
+	  var disqus_shortname = 'schnee27';
+          var disqus_identifier = '/pages/2014/10/19/new_20141019.html';
+          var disqus_url = 'http://linliuzi.github.io/pages/2014/10/19/new_20141019.html';
+          var disqus_title = '网贷记账应用“库牛”设计全过程之五——用户界面设计';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
