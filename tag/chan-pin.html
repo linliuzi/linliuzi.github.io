@@ -53,6 +53,41 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="http://linliuzi.github.io/pages/2014/10/21/new_20141021.html">网贷记账应用“库牛”设计全过程之六——交互模拟</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-21T00:00:00" pubdate>2014-10-21</time></p>
+</header>
+
+  <div class="entry-content"><p>画出初稿后，我用移动端交互设计好帮手POP拍照添加交互效果，进行使用模拟。<br />
+虽然不会开发，但是用POP模拟出来的感觉跟真的APP一样一样的哈~  </p>
+<p>模拟的过程中，发现了不少画图时没有注意的细节，发现了不少应该加以优化的地方。<br />
+这些需要优化的地方，虽然有部分利用POP和Axure都不容易添加效果，但是通过模拟中对页面的每个元素的交互的思考添加和实际感知，还是获益匪浅。<br />
+真正每个地方都点一次，才知道原来还有那么多细节在原先的设计中没有考虑到o(︶︿︶)o <br />
+现在列举下面几点作为例子：</p>
+<ol>
+<li>统计tab下总账户、平台、交易三层次的展开和收起的交互。</li>
+<li>切换tab时各页面显示保持惯性，显示不变。</li>
+<li>各tab下左上角头像点击后，在未登录态下应进入登录页面，登录态下进入帐号信息页面。</li>
+<li>更多tab下的数据同步，进行同步前应该判断是否处于登录态，只有处于登录态才可以同步，否则需引导用户进行注册或登录。</li>
+<li>首页tab待处理部分，点击后跳转到日历模式的明细tab，并且定位到最早一条待处理的明细。</li>
+<li>通过滚动轴选择选项的方式，一定要一个“确定”按钮来确定结果，而不能以滚动到的位置作为最终结果。</li>
+</ol>
+<p>总的交互原则是：  </p>
+<ul>
+<li>应用的四个tab之间与记账下的四种类型之间可以通过左右滑动切换页面，点击具体选项或左右滑动切换的交互都是左右滑动来展示新页面</li>
+<li>除此之外的所有页面则采用模态视图，统一用向上滑出，向下收起的交互方式。</li>
+<li>输入框作为非全页面的控件，其出现与消失与其展示的位置一致，也是向上滑出向下收起。</li>
+</ul>
+<p>上述有好几点最终我还是没能在POP或之后的Axure中添加成功。<br />
+但我发现了不足之处，心中知道最终的效果应该是怎样滴，只不过我POP和Axure的能力还不够而已(┬＿┬)    </p>
+<p>POP应用在国内分享的时候不太好用 ...</p></div>
+  <footer>
+    <a rel="full-article" href="http://linliuzi.github.io/pages/2014/10/21/new_20141021.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="http://linliuzi.github.io/pages/2014/10/19/new_20141019.html">网贷记账应用“库牛”设计全过程之五——用户界面设计</a>
       </h1>
       <p class="meta"><time datetime="2014-10-19T00:00:00" pubdate>2014-10-19</time></p>
@@ -248,26 +283,6 @@ logo是带牛角的钥匙，是开启堆满财富的金库的钥匙。<br />
     <a rel="full-article" href="http://linliuzi.github.io/pages/2014/07/27/new_20140727.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="http://linliuzi.github.io/pages/2014/07/09/new_20140709.html">不忘初心之于产品经理</a>
-      </h1>
-      <p class="meta"><time datetime="2014-07-09T00:00:00" pubdate>2014-07-09</time></p>
-</header>
-
-  <div class="entry-content"><p>很早之前就知道有"不忘初心"这个词，当时觉得自己这么有追求有坚持的人，应该很容易做到。现在才发现其实很难，我也只是在努力追求！<br />
-对一个产品经理来说，不忘初心，尤其是难能可贵的品质。  </p>
-<p>无论在产品的什么阶段，产品经理都会收到来自八方的产品建议。过滤建议时，非常需要不忘初心。<br />
-尤其是在人员冗余的大公司，产品建议不仅可能来自你的不够熟悉一线工作的老板，来自有着自己KPI的运营或商业的同事，甚至可能来自相信"人人都是产品经理"的开发设计等等其他同事。这些建议有时候友好，像美好的小礼物；有时候强硬，像不即刻回复就会杀了你的架在你脖子上的刀。虽然说我们应该兼听则明，广泛收集他人的意见，但是也一定要"不忘初心"，不忘你作为一个产品经理所应有的主见和立场，要能有反对老大的勇气，勇于有理有据地驳回老板的不靠谱的建议；要能安抚运营同事的玻璃心，判断运营bug的急迫性，呵护下班中的开发哥哥；要能欣赏商业同事迫于KPI的大胆创新，同时把握好用户体验和商业利益之间的平衡；要能真诚地感谢非产品同事的可能非专业的产品建议，有主见地对意见进行过滤。<br />
-一个没有本心，人云亦云的产品经理，会淹死在各路意见中，但仍然不可能做出好产品！</p>
-<p>不忘初心，在团队充满负能量时更为需要。虽然，这时的不忘初心不一定意味着坚守职位。<br />
-你可以因为预见到未来的风险不忘内心的追求而选择离开，也可以因为爱着这个产品依旧相信内心的坚持而继续留下。这都是不忘初心！<br />
-离开比留下更容易 ...</p></div>
-  <footer>
-    <a rel="full-article" href="http://linliuzi.github.io/pages/2014/07/09/new_20140709.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="http://linliuzi.github.io/tag/chan-pin2.html">&larr; Older</a>
 
@@ -277,6 +292,9 @@ logo是带牛角的钥匙，是开启堆满财富的金库的钥匙。<br />
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
+      <li class="post">
+          <a href="http://linliuzi.github.io/pages/2014/10/21/new_20141021.html">网贷记账应用“库牛”设计全过程之六——交互模拟</a>
+      </li>
       <li class="post">
           <a href="http://linliuzi.github.io/pages/2014/10/19/new_20141019.html">网贷记账应用“库牛”设计全过程之五——用户界面设计</a>
       </li>
@@ -288,9 +306,6 @@ logo是带牛角的钥匙，是开启堆满财富的金库的钥匙。<br />
       </li>
       <li class="post">
           <a href="http://linliuzi.github.io/pages/2014/10/14/new_20141014.html">网贷记账应用“库牛”设计全过程之三——对象分析</a>
-      </li>
-      <li class="post">
-          <a href="http://linliuzi.github.io/pages/2014/10/12/new_20141012.html">网贷记账应用“库牛”设计全过程之二——流程梳理</a>
       </li>
     </ul>
   </section>
