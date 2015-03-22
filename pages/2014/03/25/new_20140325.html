@@ -53,16 +53,16 @@
   <article class="hentry" role="article">
 <header>
       <h1 class="entry-title">搜索引擎结果质量量化的学习笔记</h1>
-      <p class="meta"><time datetime="2014-03-25T00:00:00" pubdate>2014-03-25</time></p>
+      <p class="meta"><time datetime="2014-03-25T00:00:00+08:00" pubdate>2014-03-25</time></p>
 </header>
 
-  <div class="entry-content"><div class="highlight"><pre><span class="err">最近都是学习笔记的节奏哈</span><span class="o">~~</span><span class="err">归根到底是我太弱了，有好多要学习的东西</span><span class="o">~~</span>
+  <div class="entry-content"><div class="highlight"><pre>最近都是学习笔记的节奏哈~~归根到底是我太弱了，有好多要学习的东西~~
 
-<span class="err">今天转发的是搜索引擎结果质量的量化方法的介绍。</span>
-<span class="err">对原文进行了更符合</span><span class="n">PM</span><span class="err">需求的改动，去掉了一些技术实现的细节。</span>
+今天转发的是搜索引擎结果质量的量化方法的介绍。
+对原文进行了更符合PM需求的改动，去掉了一些技术实现的细节。
 
-<span class="err">搜索引擎的结果质量如果是人工来判断，主观性较强，需要有一个量化的并且尽量自动化的指标。</span>
-<span class="err">本文主要介绍的就是搜索引擎结果质量的常见评价指标和量化方法。与君共学。</span>
+搜索引擎的结果质量如果是人工来判断，主观性较强，需要有一个量化的并且尽量自动化的指标。
+本文主要介绍的就是搜索引擎结果质量的常见评价指标和量化方法。与君共学。
 </pre></div>
 
 
@@ -73,17 +73,17 @@
 <h2>Cranfield评价体系</h2>
 <p>二十世纪五十年代英国Cranfield University提出了一套由<strong>查询样例集、正确答案集、评测指标构成的完整评测方案</strong>，并从此确立了“评价”在信息检索研究中的核心地位。<br />
 Cranfield评价体系由三个环节组成：</p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="err">构造查询词集合：抽取代表性的查询词，组成一个规模适当的集合</span>
-<span class="mf">2.</span> <span class="err">构造理想结果：针对查询样例集合，从检索系统的语料库中寻找对应的结果，进行标注（通常人工进行，现在有专门做标注的外包公司）</span>
-<span class="mf">3.</span> <span class="err">评价搜索结果与理想结果的接近程度：将查询词和带有标注信息的语料库输入检索系统，对系统反馈的检索结果，使用预定义好的评价计算公式，用数值化的方法来评价检索系统结果和标注的理想结果的接近程度</span>
+<div class="highlight"><pre>1. 构造查询词集合：抽取代表性的查询词，组成一个规模适当的集合
+2. 构造理想结果：针对查询样例集合，从检索系统的语料库中寻找对应的结果，进行标注（通常人工进行，现在有专门做标注的外包公司）
+3. 评价搜索结果与理想结果的接近程度：将查询词和带有标注信息的语料库输入检索系统，对系统反馈的检索结果，使用预定义好的评价计算公式，用数值化的方法来评价检索系统结果和标注的理想结果的接近程度
 </pre></div>
 
 
 <h2>构造查询词集合</h2>
 <p>Cranfield在各大搜索引擎公司内有广泛的应用。具体应用时，首先需要解决的问题是构造一个测试用的查询词集合。为了使评估符合线上实际情况，查询词的各因子的比例会尽量按照线上比例选取，通常从线上用户的QueryLog文件中自动抽取。</p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="n">Query</span><span class="err">的类型：寻址类查询</span><span class="p">(</span><span class="n">Navigational</span><span class="p">)</span><span class="o">:</span><span class="err">信息类查询</span><span class="p">(</span><span class="n">Informational</span><span class="p">)</span><span class="o">:</span><span class="err">事务类查询</span><span class="p">(</span><span class="n">Transactional</span><span class="p">)</span><span class="err">各自的比例分别为</span><span class="mf">12.3</span><span class="o">%:</span><span class="mf">62.0</span><span class="o">%:</span><span class="mf">25.7</span><span class="o">%</span><span class="err">。</span><span class="p">(</span><span class="n">Andrei</span> <span class="n">Broder</span><span class="p">)</span>
-<span class="mf">2.</span> <span class="n">Query</span><span class="err">的频次：对热门</span><span class="n">query</span><span class="err">（高频查询）、长尾</span><span class="n">query</span><span class="err">（中低频）也分别占特定的比例。</span>
-<span class="mf">3.</span> <span class="n">Query</span><span class="err">的长短：短</span><span class="n">query</span><span class="err">（单</span><span class="n">term</span><span class="err">的查询）和长</span><span class="n">Query</span><span class="err">（多</span><span class="n">Term</span><span class="err">的查询）排序算法往往会有一些不同。</span>
+<div class="highlight"><pre>1. Query的类型：寻址类查询(Navigational):信息类查询(Informational):事务类查询(Transactional)各自的比例分别为12.3%:62.0%:25.7%。(Andrei Broder)
+2. Query的频次：对热门query（高频查询）、长尾query（中低频）也分别占特定的比例。
+3. Query的长短：短query（单term的查询）和长Query（多Term的查询）排序算法往往会有一些不同。
 </pre></div>
 
 
@@ -107,9 +107,9 @@ Cranfield评价体系由三个环节组成：</p>
 这里使用调和平均数而不是通常的几何平均或算术平均，原因是调和平均数强调较小数值的重要性，能敏感的反映小数字的变化，因此更适合用来反映检索效果。  </p>
 <h3>P@N方法</h3>
 <p>点击因素的影响传统的Precision-Recall并不完全适用对搜索引擎的评估，原因是<strong>搜索引擎用户的点击方式有其特殊性</strong>，包括：  </p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="mi">60</span><span class="o">-</span><span class="mi">65</span><span class="o">%</span><span class="err">的查询点击了名列搜索结果前</span><span class="mi">10</span><span class="err">条的网页；</span> 
-<span class="mf">2.</span> <span class="mi">20</span><span class="o">-</span><span class="mi">25</span><span class="o">%</span><span class="err">的人会考虑点击名列</span><span class="mi">11</span><span class="err">到</span><span class="mi">20</span><span class="err">的网页；</span> 
-<span class="mf">3.</span> <span class="err">仅有</span><span class="mi">3</span><span class="o">-</span><span class="mi">4</span><span class="o">%</span><span class="err">的会点击名列搜索结果中列第</span><span class="mi">21</span><span class="err">到第</span><span class="mi">30</span><span class="err">名的网页</span>
+<div class="highlight"><pre>1. 60-65%的查询点击了名列搜索结果前10条的网页； 
+2. 20-25%的人会考虑点击名列11到20的网页； 
+3. 仅有3-4%的会点击名列搜索结果中列第21到第30名的网页
 </pre></div>
 
 
@@ -140,9 +140,9 @@ MRR是平均排序倒数（Mean Reciprocal Rank）的简称，MRR方法主要用
 则MAP= (0.83+0.45)/2=0.64。  </p>
 <h3>DCG</h3>
 <p>DCG是英文Discounted cumulative gain的简称，中文可翻译为“折扣增益值”。DCG方法的基本思想是：</p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="err">每条结果的相关性分等级来衡量</span>
-<span class="mf">2.</span> <span class="err">考虑结果所在的位置，位置越靠前的则重要程度越高</span>
-<span class="mf">3.</span> <span class="err">等级高（即好结果）的结果位置越靠前则值应该越高，否则给予惩罚</span>
+<div class="highlight"><pre>1. 每条结果的相关性分等级来衡量
+2. 考虑结果所在的位置，位置越靠前的则重要程度越高
+3. 等级高（即好结果）的结果位置越靠前则值应该越高，否则给予惩罚
 </pre></div>
 
 
@@ -170,7 +170,7 @@ Joachims同时证明了Interleaving Testing评价方法与传统Cranfield评价�
   <span class="byline author vcard">
     Posted by <span class="fn">linliuzi</span>
   </span>
-<time datetime="2014-03-25T00:00:00" pubdate>2014-03-25</time>  <span class="categories">
+<time datetime="2014-03-25T00:00:00+08:00" pubdate>2014-03-25</time>  <span class="categories">
     <a class="category" href="http://linliuzi.github.io/tag/ji-zhu.html">技术</a>
     <a class="category" href="http://linliuzi.github.io/tag/xue-xi-bi-ji.html">学习笔记</a>
     <a class="category" href="http://linliuzi.github.io/tag/zhuan-zai.html">转载</a>
