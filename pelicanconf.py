@@ -32,7 +32,7 @@ SOCIAL = (('heifrank blog', 'http://heifrank.github.io'),
 
 DEFAULT_PAGINATION = 10
 
-THEME = r'D:\Program Files\github install\pelican-themes-master\pelican-themes-master\pelican-octopress-theme'
+THEME = r'/Users/jraytyyang/Downloads/pelican-octopress-theme'
 
 DISQUS_SITENAME = 'schnee27'
 # Uncomment following line if you want document-relative URLs when developing
